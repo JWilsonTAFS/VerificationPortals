@@ -1,0 +1,650 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="BuildSalesforceQueue" this:BuildSalesforceQueue.IsProduction="True" this:BuildSalesforceQueue.NullDebtorPortalFallback="Unknown" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:rr="clr-namespace:Remora.Results;assembly=Remora.Results" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.ComponentModel;assembly=System.ComponentModel.TypeConverter" xmlns:sc1="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:st="clr-namespace:System.Text;assembly=System.Private.CoreLib" xmlns:tapm="clr-namespace:Tafs.Applications.PostVerificationPortal.Models;assembly=Tafs.Applications.PostVerificationPortal" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:usa="clr-namespace:UiPath.Salesforce.Activities;assembly=UiPath.Salesforce.Activities" xmlns:usam="clr-namespace:UiPath.Salesforce.Activities.Models;assembly=UiPath.Salesforce.Activities" xmlns:usc="clr-namespace:UiPath.Salesforce.ConnectionService;assembly=UiPath.Salesforce" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="IsProduction" Type="InArgument(x:Boolean)" />
+    <x:Property Name="BuildSalesforceQueueResult" Type="OutArgument(rr:Result(tapm:QueueItemCollection))" />
+    <x:Property Name="NullDebtorPortalFallback" Type="InArgument(x:String)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1615.2,4184.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Remora.Results</x:String>
+      <x:String>UiPath.Salesforce.ConnectionService</x:String>
+      <x:String>UiPath.Salesforce.Models</x:String>
+      <x:String>UiPath.Salesforce.Telemetry</x:String>
+      <x:String>UiPath.Salesforce.Activities</x:String>
+      <x:String>UiPath.Salesforce.Activities.Models</x:String>
+      <x:String>Tafs.Applications.Salesforce</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal.Models</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal</x:String>
+      <x:String>System.Globalization</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.HashCode</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>Remora.Results</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.Collections.Immutable</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.Text.Encoding.CodePages</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Tafs.Applications.PostVerificationPortal</AssemblyReference>
+      <AssemblyReference>Tafs.Applications.Salesforce</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Salesforce</AssemblyReference>
+      <AssemblyReference>UiPath.Salesforce.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>PostVerificationPortal3.Core</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="BuildSalesforceQueue" sap:VirtualizedContainerService.HintSize="988.8,4120" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="salesforceServer" />
+      <Variable x:TypeArguments="x:String" Name="consumerKey" />
+      <Variable x:TypeArguments="ss:SecureString" Name="consumerSecret" />
+      <Variable x:TypeArguments="ss:SecureString" Name="salesforcePasswordSecure" />
+      <Variable x:TypeArguments="x:String" Name="salesforceUsername" />
+      <Variable x:TypeArguments="ss:SecureString" Name="tafsSalesforceToken" />
+      <Variable x:TypeArguments="x:Object" Name="__" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <Sequence DisplayName="Get Credentials" sap:VirtualizedContainerService.HintSize="926.4,621.6" sap2010:WorkflowViewState.IdRef="Sequence_2">
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="tafsSalesforceCredential" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="387.2,143.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1">
+        <ui:GetRobotCredential.Password>
+          <OutArgument x:TypeArguments="ss:SecureString">
+            <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">salesforcePasswordSecure</CSharpReference>
+          </OutArgument>
+        </ui:GetRobotCredential.Password>
+        <ui:GetRobotCredential.Username>
+          <OutArgument x:TypeArguments="x:String">
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">salesforceUsername</CSharpReference>
+          </OutArgument>
+        </ui:GetRobotCredential.Username>
+      </ui:GetRobotCredential>
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" Username="{x:Null}" AssetName="tafsSalesforceToken" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="387.2,143.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_2">
+        <ui:GetRobotCredential.Password>
+          <OutArgument x:TypeArguments="ss:SecureString">
+            <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">tafsSalesforceToken</CSharpReference>
+          </OutArgument>
+        </ui:GetRobotCredential.Password>
+      </ui:GetRobotCredential>
+      <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="tafsSalesforceApplicationCredential" CacheStrategy="None" DisplayName="Get Credential" sap:VirtualizedContainerService.HintSize="387.2,143.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_3">
+        <ui:GetRobotCredential.Password>
+          <OutArgument x:TypeArguments="ss:SecureString">
+            <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">consumerSecret</CSharpReference>
+          </OutArgument>
+        </ui:GetRobotCredential.Password>
+        <ui:GetRobotCredential.Username>
+          <OutArgument x:TypeArguments="x:String">
+            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">consumerKey</CSharpReference>
+          </OutArgument>
+        </ui:GetRobotCredential.Username>
+      </ui:GetRobotCredential>
+    </Sequence>
+    <Assign sap:VirtualizedContainerService.HintSize="926.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_1">
+      <Assign.To>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">salesforceServer</CSharpReference>
+        </OutArgument>
+      </Assign.To>
+      <Assign.Value>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_98">IsProduction ? "Live" : "Live"</CSharpValue>
+        </InArgument>
+      </Assign.Value>
+    </Assign>
+    <usa:SalesforceApplicationScope CustomServer="{x:Null}" DesignSalesforceConnectionInfo="{x:Null}" ExistingConnectionService="{x:Null}" Port="{x:Null}" ProxyPassword="{x:Null}" ProxyServer="{x:Null}" ProxyUser="{x:Null}" SalesforceConnection="{x:Null}" Sforce_Auto_Assign="{x:Null}" DisplayName="Salesforce Application Scope" sap:VirtualizedContainerService.HintSize="926.4,3224.8" sap2010:WorkflowViewState.IdRef="SalesforceApplicationScope_1" ReportApiErrorAsException="False" TelemetryEnabled="False" UseStrongDataTyping="False">
+      <usa:SalesforceApplicationScope.Body>
+        <ActivityAction x:TypeArguments="usc:IConnectionService">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="usc:IConnectionService" Name="SalesforceConnection" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="892.8,3113.6" sap2010:WorkflowViewState.IdRef="Sequence_3">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="sd:DataTable" Name="getRecordsTable" />
+              <Variable x:TypeArguments="usam:SalesforceStatus" Name="salesforceStatus" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="830.4,215.2" sap2010:WorkflowViewState.IdRef="CommentOut_4">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="449.6,136.8" sap2010:WorkflowViewState.IdRef="Sequence_16">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <usa:ExecuteSoql DisplayName="Execute SOQL" sap:VirtualizedContainerService.HintSize="387.2,24.8" sap2010:WorkflowViewState.IdRef="ExecuteSoql_1">
+                    <usa:ExecuteSoql.Result>
+                      <OutArgument x:TypeArguments="sd:DataTable">
+                        <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">getRecordsTable</CSharpReference>
+                      </OutArgument>
+                    </usa:ExecuteSoql.Result>
+                    <usa:ExecuteSoql.SalesforceStatus>
+                      <OutArgument x:TypeArguments="usam:SalesforceStatus">
+                        <CSharpReference x:TypeArguments="usam:SalesforceStatus" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">salesforceStatus</CSharpReference>
+                      </OutArgument>
+                    </usa:ExecuteSoql.SalesforceStatus>
+                    <usa:ExecuteSoql.SoqlCommand>
+                      <InArgument x:TypeArguments="x:String">
+                        <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_99" xml:space="preserve">@"Select Id
+    ,Debtor__r.Debtor_Portal__c
+    ,Invoice__r.TAFS_PO_No__c
+    ,Invoice__r.TAFS_Client_Name__r.Name
+    ,Client__r.TAFS_Client_Number__c
+    ,Debtor__r.Name
+    ,Invoice__r.TAFS_Invoice_Amount__c
+    ,Client__r.TAFS_Motor_Carrier__c
+    ,Client__r.TAFS_DOT__c
+FROM Invoice_Action__c
+WHERE Bot_Status__c = 'Queued' and RecordType.Name = 'Verifications' and Debtor__r.Debtor_Portal__c &lt;&gt; ''"</CSharpValue>
+                      </InArgument>
+                    </usa:ExecuteSoql.SoqlCommand>
+                  </usa:ExecuteSoql>
+                </Sequence>
+              </ui:CommentOut.Body>
+            </ui:CommentOut>
+            <usa:ExecuteSoql DisplayName="Execute SOQL" sap:VirtualizedContainerService.HintSize="830.4,24.8" sap2010:WorkflowViewState.IdRef="ExecuteSoql_4">
+              <usa:ExecuteSoql.Result>
+                <OutArgument x:TypeArguments="sd:DataTable">
+                  <CSharpReference x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpReference`1_47">getRecordsTable</CSharpReference>
+                </OutArgument>
+              </usa:ExecuteSoql.Result>
+              <usa:ExecuteSoql.SalesforceStatus>
+                <OutArgument x:TypeArguments="usam:SalesforceStatus">
+                  <CSharpReference x:TypeArguments="usam:SalesforceStatus" sap2010:WorkflowViewState.IdRef="CSharpReference`1_48">salesforceStatus</CSharpReference>
+                </OutArgument>
+              </usa:ExecuteSoql.SalesforceStatus>
+              <usa:ExecuteSoql.SoqlCommand>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_91" xml:space="preserve">@"Select Id
+    ,Debtor__r.Debtor_Portal__c
+    ,Invoice__r.TAFS_PO_No__c
+    ,Invoice__r.TAFS_Client_Name__r.Name
+    ,Client__r.TAFS_Client_Number__c
+    ,Debtor__r.Name
+    ,Invoice__r.TAFS_Invoice_Amount__c
+    ,Client__r.TAFS_Motor_Carrier__c
+    ,Client__r.TAFS_DOT__c
+FROM Invoice_Action__c
+WHERE Bot_Status__c = 'Queued' and RecordType.Name = 'Verifications' and Due_Date__c &lt;= TODAY"</CSharpValue>
+                </InArgument>
+              </usa:ExecuteSoql.SoqlCommand>
+            </usa:ExecuteSoql>
+            <ui:IfElseIf DisplayName="Else If" sap:VirtualizedContainerService.HintSize="830.4,2681.6" sap2010:WorkflowViewState.IdRef="IfElseIf_1">
+              <ui:IfElseIf.ConditionBlocks>
+                <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
+                  <ui:IfElseIfBlock BlockType="If" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_1">
+                    <ui:IfElseIfBlock.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">!salesforceStatus.Success</CSharpValue>
+                      </InArgument>
+                    </ui:IfElseIfBlock.Condition>
+                    <ui:IfElseIfBlock.Then>
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="rr:Result(tapm:QueueItemCollection)">
+                            <CSharpReference x:TypeArguments="rr:Result(tapm:QueueItemCollection)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_35">BuildSalesforceQueueResult</CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="rr:Result(tapm:QueueItemCollection)">
+                            <CSharpValue x:TypeArguments="rr:Result(tapm:QueueItemCollection)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">Result&lt;QueueItemCollection&gt;.FromError(new SalesforceError(salesforceStatus))</CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="ElseIf" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_2">
+                    <ui:IfElseIfBlock.Condition>
+                      <InArgument x:TypeArguments="x:Boolean">
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_11">0 == getRecordsTable.Rows.Count</CSharpValue>
+                      </InArgument>
+                    </ui:IfElseIfBlock.Condition>
+                    <ui:IfElseIfBlock.Then>
+                      <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_3">
+                        <Assign.To>
+                          <OutArgument x:TypeArguments="rr:Result(tapm:QueueItemCollection)">
+                            <CSharpReference x:TypeArguments="rr:Result(tapm:QueueItemCollection)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_36">BuildSalesforceQueueResult</CSharpReference>
+                          </OutArgument>
+                        </Assign.To>
+                        <Assign.Value>
+                          <InArgument x:TypeArguments="rr:Result(tapm:QueueItemCollection)">
+                            <CSharpValue x:TypeArguments="rr:Result(tapm:QueueItemCollection)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">Result&lt;QueueItemCollection&gt;.FromSuccess(new QueueItemCollection())</CSharpValue>
+                          </InArgument>
+                        </Assign.Value>
+                      </Assign>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                  <ui:IfElseIfBlock BlockType="Else" sap2010:WorkflowViewState.IdRef="IfElseIfBlock_3">
+                    <ui:IfElseIfBlock.Then>
+                      <Sequence DisplayName="Partition DataTable by Portal" sap:VirtualizedContainerService.HintSize="628.8,2160.8" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                        <Sequence.Variables>
+                          <Variable x:TypeArguments="tapm:QueueItemCollection" Name="resultCollection" />
+                        </Sequence.Variables>
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign DisplayName="Temporary Sorting Dictionary" sap:VirtualizedContainerService.HintSize="566.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_4">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="tapm:QueueItemCollection">
+                              <CSharpReference x:TypeArguments="tapm:QueueItemCollection" sap2010:WorkflowViewState.IdRef="CSharpReference`1_42">resultCollection</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="tapm:QueueItemCollection">
+                              <CSharpValue x:TypeArguments="tapm:QueueItemCollection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_92">new QueueItemCollection()</CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="566.4,750.4" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+                          <ui:ForEachRow.Body>
+                            <ActivityAction x:TypeArguments="sd:DataRow">
+                              <ActivityAction.Argument>
+                                <DelegateInArgument x:TypeArguments="sd:DataRow" Name="dataRow" />
+                              </ActivityAction.Argument>
+                              <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="476.8,562.4" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                                <Sequence.Variables>
+                                  <Variable x:TypeArguments="x:String" Name="portal" />
+                                  <Variable x:TypeArguments="tapm:QueueItem" Name="queueItem" />
+                                  <Variable x:TypeArguments="x:String" Name="debtorPortal" />
+                                </Sequence.Variables>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="433.6,52.8" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+                                  <ui:CommentOut.Body>
+                                    <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="563.2,762.4" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <Assign sap:VirtualizedContainerService.HintSize="500.8,81.6" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                        <Assign.To>
+                                          <OutArgument x:TypeArguments="x:String">
+                                            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">portal</CSharpReference>
+                                          </OutArgument>
+                                        </Assign.To>
+                                        <Assign.Value>
+                                          <InArgument x:TypeArguments="x:String">
+                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">dataRow.Field&lt;string&gt;("Debtor__r.Debtor_Portal__c")</CSharpValue>
+                                          </InArgument>
+                                        </Assign.Value>
+                                      </Assign>
+                                      <If sap2010:Annotation.AnnotationText="30-AUG-23 -- Should be resolved, but leaving this here doesn't hurt." DisplayName="If portal name is null" sap:VirtualizedContainerService.HintSize="500.8,528.8" sap2010:WorkflowViewState.IdRef="If_1">
+                                        <If.Condition>
+                                          <InArgument x:TypeArguments="x:Boolean">
+                                            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">string.IsNullOrWhiteSpace(portal)</CSharpValue>
+                                          </InArgument>
+                                        </If.Condition>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                        <If.Then>
+                                          <If DisplayName="If debtor is TQL" sap:VirtualizedContainerService.HintSize="467.2,314.4" sap2010:WorkflowViewState.IdRef="If_2">
+                                            <If.Condition>
+                                              <InArgument x:TypeArguments="x:Boolean">
+                                                <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">dataRow.Field&lt;string&gt;("Debtor__r.Name").Equals("TQL - Total Quality Log (Email)")</CSharpValue>
+                                              </InArgument>
+                                            </If.Condition>
+                                            <If.Then>
+                                              <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="x:String">
+                                                    <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">portal</CSharpReference>
+                                                  </OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="x:String">TQL</InArgument>
+                                                </Assign.Value>
+                                              </Assign>
+                                            </If.Then>
+                                            <If.Else>
+                                              <ui:Continue sap:VirtualizedContainerService.HintSize="334.4,24.8" sap2010:WorkflowViewState.IdRef="Continue_1" />
+                                            </If.Else>
+                                          </If>
+                                        </If.Then>
+                                        <If.Else>
+                                          <Sequence DisplayName="" sap2010:WorkflowViewState.IdRef="Sequence_18" />
+                                        </If.Else>
+                                      </If>
+                                    </Sequence>
+                                  </ui:CommentOut.Body>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                      <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                </ui:CommentOut>
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_19">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:String">
+                                      <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_51">debtorPortal</CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:String">
+                                      <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_107">string.IsNullOrWhiteSpace(dataRow.Field&lt;string?&gt;("Debtor__r.Debtor_Portal__c")) ? NullDebtorPortalFallback : dataRow.Field&lt;string?&gt;("Debtor__r.Debtor_Portal__c")</CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="433.6,83.2" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="tapm:QueueItem">
+                                      <CSharpReference x:TypeArguments="tapm:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpReference`1_41">queueItem</CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="tapm:QueueItem">
+                                      <CSharpValue x:TypeArguments="tapm:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_108" xml:space="preserve">new Tafs.Applications.PostVerificationPortal.Models.QueueItem
+(
+	dataRow.Field&lt;string&gt;("Id"), // SalesforceId
+	debtorPortal, // Portal
+	dataRow.Field&lt;string&gt;("Invoice__r.TAFS_PO_No__c"), // Reference Number
+	dataRow.Field&lt;string&gt;("Invoice__r.TAFS_Client_Name__r.Name"), // ClientName
+	dataRow.Field&lt;string&gt;("Client__r.TAFS_Client_Number__c"), // ClientNumber
+	dataRow.Field&lt;string&gt;("Debtor__r.Name"), //DebtorName
+	decimal.Parse(dataRow.Field&lt;string&gt;("Invoice__r.TAFS_Invoice_Amount__c"), CultureInfo.CreateSpecificCulture("en-US")), // InvoiceAmount
+	dataRow.Field&lt;string&gt;("Client__r.TAFS_Motor_Carrier__c"), // MotorCarrierNumber
+	dataRow.Field&lt;string&gt;("Client__r.TAFS_DOT__c"), // DOTNumber
+	VerificationPortalStatus.Queued, // BotStatus
+	null, // Details
+	null, // PaymentDate
+	null // ClientAlias
+)</CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <InvokeMethod DisplayName="Add queue item to collection" sap:VirtualizedContainerService.HintSize="433.6,135.2" sap2010:WorkflowViewState.IdRef="InvokeMethod_2" MethodName="Add">
+                                  <InvokeMethod.TargetObject>
+                                    <InArgument x:TypeArguments="tapm:QueueItemCollection">
+                                      <CSharpValue x:TypeArguments="tapm:QueueItemCollection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_90">resultCollection</CSharpValue>
+                                    </InArgument>
+                                  </InvokeMethod.TargetObject>
+                                  <InArgument x:TypeArguments="tapm:QueueItem">
+                                    <CSharpValue x:TypeArguments="tapm:QueueItem" sap2010:WorkflowViewState.IdRef="CSharpValue`1_89">queueItem</CSharpValue>
+                                  </InArgument>
+                                </InvokeMethod>
+                              </Sequence>
+                            </ActivityAction>
+                          </ui:ForEachRow.Body>
+                          <ui:ForEachRow.DataTable>
+                            <InArgument x:TypeArguments="sd:DataTable">
+                              <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">getRecordsTable</CSharpValue>
+                            </InArgument>
+                          </ui:ForEachRow.DataTable>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                        </ui:ForEachRow>
+                        <Sequence DisplayName="Log" sap:VirtualizedContainerService.HintSize="566.4,1015.2" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                          <Sequence.Variables>
+                            <Variable x:TypeArguments="st:StringBuilder" Name="sb" />
+                            <Variable x:TypeArguments="scg:Dictionary(x:String, x:Int32)" Name="countByPortal" />
+                          </Sequence.Variables>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="504,81.6" sap2010:WorkflowViewState.IdRef="Assign_17">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">
+                                <CSharpReference x:TypeArguments="scg:Dictionary(x:String, x:Int32)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_49">countByPortal</CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Int32)">
+                                <CSharpValue x:TypeArguments="scg:Dictionary(x:String, x:Int32)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_101">resultCollection.GetCountByPortal(false, true);</CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <Assign sap:VirtualizedContainerService.HintSize="504,81.6" sap2010:WorkflowViewState.IdRef="Assign_12">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="st:StringBuilder">
+                                <CSharpReference x:TypeArguments="st:StringBuilder" sap2010:WorkflowViewState.IdRef="CSharpReference`1_30">sb</CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="st:StringBuilder">
+                                <CSharpValue x:TypeArguments="st:StringBuilder" sap2010:WorkflowViewState.IdRef="CSharpValue`1_105">new StringBuilder("Found " + countByPortal.Keys.Count + " unique portals:" + Environment.NewLine + "{" + Environment.NewLine)</CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                          </Assign>
+                          <TryCatch DisplayName="Try Catch" sap:VirtualizedContainerService.HintSize="504,477.6" sap2010:WorkflowViewState.IdRef="TryCatch_1">
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                            <TryCatch.Finally>
+                              <Sequence sap:VirtualizedContainerService.HintSize="496,313" sap2010:WorkflowViewState.IdRef="Sequence_17">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Object">
+                                      <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_50">__</CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_106">sb.AppendLine("}")</CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign DisplayName="Clear Dummy Value" sap:VirtualizedContainerService.HintSize="434,81" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Object">
+                                      <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_32">__</CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Object">
+                                      <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">null</CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </TryCatch.Finally>
+                            <TryCatch.Try>
+                              <ui:ForEach x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="467.2,269.6" sap2010:WorkflowViewState.IdRef="ForEach`1_6">
+                                <ui:ForEach.Body>
+                                  <ActivityAction x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)">
+                                    <ActivityAction.Argument>
+                                      <DelegateInArgument x:TypeArguments="scg:KeyValuePair(x:String, x:Int32)" Name="kvp" />
+                                    </ActivityAction.Argument>
+                                    <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                      <Assign.To>
+                                        <OutArgument x:TypeArguments="x:Object">
+                                          <CSharpReference x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpReference`1_45">__</CSharpReference>
+                                        </OutArgument>
+                                      </Assign.To>
+                                      <Assign.Value>
+                                        <InArgument x:TypeArguments="st:StringBuilder">
+                                          <CSharpValue x:TypeArguments="st:StringBuilder" sap2010:WorkflowViewState.IdRef="CSharpValue`1_104">sb.AppendLine("\t{ " + kvp.Key + " :: " + kvp.Value + " rows }")</CSharpValue>
+                                        </InArgument>
+                                      </Assign.Value>
+                                    </Assign>
+                                  </ActivityAction>
+                                </ui:ForEach.Body>
+                                <ui:ForEach.Values>
+                                  <InArgument x:TypeArguments="sc1:IEnumerable">
+                                    <CSharpValue x:TypeArguments="sc1:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_103">countByPortal</CSharpValue>
+                                  </InArgument>
+                                </ui:ForEach.Values>
+                              </ui:ForEach>
+                            </TryCatch.Try>
+                          </TryCatch>
+                          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="504,142.4" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+                            <ui:LogMessage.Message>
+                              <InArgument x:TypeArguments="x:Object">
+                                <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_37">sb.ToString()</CSharpValue>
+                              </InArgument>
+                            </ui:LogMessage.Message>
+                          </ui:LogMessage>
+                        </Sequence>
+                        <Assign DisplayName="Assign Result" sap:VirtualizedContainerService.HintSize="566.4,81.6" sap2010:WorkflowViewState.IdRef="Assign_15">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="rr:Result(tapm:QueueItemCollection)">
+                              <CSharpReference x:TypeArguments="rr:Result(tapm:QueueItemCollection)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_37">BuildSalesforceQueueResult</CSharpReference>
+                            </OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="rr:Result(tapm:QueueItemCollection)">
+                              <CSharpValue x:TypeArguments="rr:Result(tapm:QueueItemCollection)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_63">resultCollection</CSharpValue>
+                            </InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </ui:IfElseIfBlock.Then>
+                  </ui:IfElseIfBlock>
+                </sc:BindingList>
+              </ui:IfElseIf.ConditionBlocks>
+            </ui:IfElseIf>
+          </Sequence>
+        </ActivityAction>
+      </usa:SalesforceApplicationScope.Body>
+      <usa:SalesforceApplicationScope.ConsumerKey>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">consumerKey</CSharpValue>
+        </InArgument>
+      </usa:SalesforceApplicationScope.ConsumerKey>
+      <usa:SalesforceApplicationScope.ConsumerSecret>
+        <InArgument x:TypeArguments="ss:SecureString">
+          <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">consumerSecret</CSharpValue>
+        </InArgument>
+      </usa:SalesforceApplicationScope.ConsumerSecret>
+      <usa:SalesforceApplicationScope.Password>
+        <InArgument x:TypeArguments="ss:SecureString">
+          <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_6">salesforcePasswordSecure</CSharpValue>
+        </InArgument>
+      </usa:SalesforceApplicationScope.Password>
+      <usa:SalesforceApplicationScope.SecurityToken>
+        <InArgument x:TypeArguments="ss:SecureString">
+          <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_7">tafsSalesforceToken</CSharpValue>
+        </InArgument>
+      </usa:SalesforceApplicationScope.SecurityToken>
+      <usa:SalesforceApplicationScope.ServerType>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">salesforceServer</CSharpValue>
+        </InArgument>
+      </usa:SalesforceApplicationScope.ServerType>
+      <usa:SalesforceApplicationScope.Username>
+        <InArgument x:TypeArguments="x:String">
+          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">salesforceUsername</CSharpValue>
+        </InArgument>
+      </usa:SalesforceApplicationScope.Username>
+    </usa:SalesforceApplicationScope>
+  </Sequence>
+</Activity>

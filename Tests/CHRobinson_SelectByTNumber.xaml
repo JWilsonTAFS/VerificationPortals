@@ -1,0 +1,222 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CHRobinson_SelectByTNumber" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1210,1000" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.HashCode</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CHRobinson_SelectByTNumber" sap:VirtualizedContainerService.HintSize="476,935" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: Accounts Receivable - Navisphere® Carrier" sap:VirtualizedContainerService.HintSize="434,843" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="bf57f058-46c5-470a-a9ab-325476d5d4f6" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,627" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="ui:UiElement" Name="locations" />
+              <Variable x:TypeArguments="ui:IPlaceholderResolver" Name="placeholderResolver" />
+              <Variable x:TypeArguments="x:String" Name="itemByValue" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:WaitUiElementAppear WaitActive="{x:Null}" WaitVisible="{x:Null}" DisplayName="Find Element 'SELECT  locations'" sap:VirtualizedContainerService.HintSize="334,106" sap2010:WorkflowViewState.IdRef="WaitUiElementAppear_1">
+              <ui:WaitUiElementAppear.FoundElement>
+                <OutArgument x:TypeArguments="ui:UiElement">
+                  <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">locations</CSharpReference>
+                </OutArgument>
+              </ui:WaitUiElementAppear.FoundElement>
+              <ui:WaitUiElementAppear.Target>
+                <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="7a538344-c26f-46ca-883d-a597bf4a9bf0" InformativeScreenshot="f189246557facc010a32ba4c0e71088c" Selector="&lt;webctrl tag='SELECT' /&gt;">
+                  <ui:Target.TimeoutMS>
+                    <InArgument x:TypeArguments="x:Int32" />
+                  </ui:Target.TimeoutMS>
+                  <ui:Target.WaitForReady>
+                    <InArgument x:TypeArguments="ui:WaitForReady" />
+                  </ui:Target.WaitForReady>
+                </ui:Target>
+              </ui:WaitUiElementAppear.Target>
+            </ui:WaitUiElementAppear>
+            <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">itemByValue</CSharpReference>
+                </OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">locations.FindFirst(FindScope.FIND_CHILDREN, new Selector("&lt;webctrl value='T2018746'/&gt;"), placeholderResolver).Get("aaname", false).ToString()</CSharpValue>
+                </InArgument>
+              </Assign.Value>
+            </Assign>
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">"ItemByValue: " + itemByValue</CSharpValue>
+                </InArgument>
+              </ui:LogMessage.Message>
+            </ui:LogMessage>
+            <uix:NSelectItem DisplayName="Select Item 'Locations'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NSelectItem_1" ScopeIdentifier="bf57f058-46c5-470a-a9ab-325476d5d4f6" Version="V1">
+              <uix:NSelectItem.Item>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">itemByValue</CSharpValue>
+                </InArgument>
+              </uix:NSelectItem.Item>
+              <uix:NSelectItem.Items>
+                <scg:List x:TypeArguments="x:String" Capacity="50">
+                  <x:String>T2018746 KARDAN TRUCKING, INC</x:String>
+                  <x:String>T6183777 (SDVMOSB) NFN TRUCKING LLC</x:String>
+                  <x:String>T5237616 0992351 B.C. Ltd</x:String>
+                  <x:String>T5331868 1 CLOVER TRUCKING, LLC</x:String>
+                  <x:String>T6006384 1 Goat Trucking LLC</x:String>
+                  <x:String>T6022850 1 STOP TRANSPORTATION LLC</x:String>
+                  <x:String>T6077607 1 TRIANA TRUCKING INC</x:String>
+                  <x:String>T6009372 10 Stars Logistics Inc</x:String>
+                  <x:String>T6033967 10:22 LOGISTICS LLC</x:String>
+                  <x:String>T6158355 1000 AND SON FREIGHT LLC</x:String>
+                  <x:String>T6128941 10X TRUCKING LLC</x:String>
+                  <x:String>T4513174 18 Express Inc</x:String>
+                  <x:String>T5245630 1869069 Ontario Inc</x:String>
+                  <x:String>T5262229 1882006 Ontario Ltd</x:String>
+                  <x:String>T5342342 1943279 Alberta Ltd</x:String>
+                  <x:String>T5343322 1943279 Alberta Ltd</x:String>
+                  <x:String>T4590203 1st Choice Auto Transport LLC</x:String>
+                  <x:String>T5388514 1st Touch LLC</x:String>
+                  <x:String>T6069013 1STOPSHOP2 LLC</x:String>
+                  <x:String>T5189692 2 Fairways Corp</x:String>
+                  <x:String>T5178753 2 J R Express LLC</x:String>
+                  <x:String>T5230937 2028153 ONTARIO INC</x:String>
+                  <x:String>T5239552 2083647 Ontario Inc</x:String>
+                  <x:String>T5156358 21 Transport LLC</x:String>
+                  <x:String>T5170756 23 Express Transport Inc</x:String>
+                  <x:String>T5227923 2348700 ONTARIO INC</x:String>
+                  <x:String>T6144742 24 7 TRUCKING LLC</x:String>
+                  <x:String>T6149010 24ON7 TRANSPORT SOLUTIONS INC</x:String>
+                  <x:String>T5337134 254 Logistics LLC</x:String>
+                  <x:String>T6136512 2611 TRANSPORT LLC</x:String>
+                  <x:String>T6121299 2788 TRUCKIN LLC</x:String>
+                  <x:String>T6197229 2J'S AND DEE TRANSPORTATION LLC</x:String>
+                  <x:String>T6134504 2ND HORSEMAN LOGISTIC LLC</x:String>
+                  <x:String>T5165912 3 Brothers Logistics Inc</x:String>
+                  <x:String>T6093690 3 BROTHERS TRANSPORTATION</x:String>
+                  <x:String>T5334667 3 Kings Logistics LLC</x:String>
+                  <x:String>T5349666 3 Point Trucking LLC</x:String>
+                  <x:String>T6172791 3 POINTS DRIVEN TRUCKING LLC</x:String>
+                  <x:String>T6104629 3 PUPS TRUCKING LLC</x:String>
+                  <x:String>T6199483 3 R TRANSPORT LLC</x:String>
+                  <x:String>T5354167 305 Diamond Trucking Inc</x:String>
+                  <x:String>T6083533 305 SEAFOOD &amp; WINGS LLC</x:String>
+                  <x:String>T6101830 360 JENNINGS LLC</x:String>
+                  <x:String>T6021963 365 OVER THE ROAD TRUCKING INC</x:String>
+                  <x:String>T6192975 3A TRANSPORT LLC</x:String>
+                  <x:String>T6213193 3A'S QUALITY TRANSPORTATION LLC</x:String>
+                  <x:String>T6145483 3AXEL TRANSPORTATION LLC</x:String>
+                  <x:String>T6019648 3C TRANSPORTS LLC</x:String>
+                  <x:String>T6013332 3C'S EXPRESS TRANSPORT SERVICE LLC</x:String>
+                  <x:String>T5364343 3CS Trucking LLC</x:String>
+                </scg:List>
+              </uix:NSelectItem.Items>
+              <uix:NSelectItem.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.navispherecarrier.com/accounts-receivable" DesignTimeRectangle="89, 537, 553, 92" ElementType="DropDown" FriendlyName="'T2018746 KARDAN'" FullSelectorArgument="&lt;webctrl tag='SELECT' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='SELECT' type='' aaname='' /&gt;" Guid="c61f64ee-c8e9-40e6-891f-2571717f54a6" InformativeScreenshot="e47d30bfd94f0917afee550984b3fe69.png" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='ASP._postlogout_aspx' title='Accounts Receivable - Navisphere® Carrier' /&gt;" SearchSteps="FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="89, 474, 65, 21" ElementType="Text" FriendlyName="'Locations'" FullSelectorArgument="&lt;webctrl aaname='Locations' parentid='accounts-receivable-page' tag='LABEL' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Locations' parentid='accounts-receivable-page' tag='LABEL' type='' check:text='Locations' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAEUAAAAZCAYAAABnweOlAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAUgSURBVFhH7VXvT1NnFO6/YEv55fYZMJtC+ICGD0KWlWQuYckWzLbYSWfNyKZ+oXOJJk5h+wAtCjI2wflBhgbopmNEJmwslC1Iq4GS4NYZaZ386AVtyw8plLbPzvvee0upHbAvc8Ge5OHec87znnPe575vUSBhT1lClDiWECWOJUSJYwlR4lhClDiWECWO/a9F8Q9UIltZhKa7UuA/sihRBLSXKrGttJ3enoHdb0ZxTG//kAmazOLnVxTBrH12HyTG/pUo/j/bcfKd3chQEi+3CEfqrPBJOdF8sNYdhSaX8sTJ1mjRNLTEM66eehjktcoclJQ3w77AU3C1aumaiGtEmGBlCZuJ+0Ybp3FbfwZxD3qzneY4jLxMqdepdjikXmxGe+PqjBn5xTjSsHYfmxdl4gfoqYnmeDO6+y3o6zShhPyMUxb4OWEJ9rNF1KgIhpZu9BGno/Ei+qRu/oGLMJotcAg+CCPNvFZGNd86sOBD9xnqfaAZDp8PPp8o5FOibDiDtAdlJopPiJzuFgM0VEPT6OAMf38lCVqAk9cdEHwu2DubUd/j4jnZNhQlHA5zDH9RQM0MuDkv+gzOb/ZTTIu2cfK9N2Gg5ntrhyP59TD4GevVBrfsV631OaxGLkq1VfQ3nCHsRhvbw97zGJZrhJ1oO0CxDzp4bfe1w8QvQIXFG6kRCy6K6Aho06mwTdcON4utgYDvyyinbYczOs6+pEqFavqSYfpRzKD3ioGofBS8dFIMujeQl0V1iMcR1WuwOk7v6PqbmYE4fA+GbngjnJh9Ldhx/t0sviZ7/8do7BewGOGKUKw6dFJosbLUTIqSL0PKdZQlQak1xwxUA2VSEj/e4aEaZNJ7ZRxRFolXQLkSowVOuhosNmikejrqJXFifY7o+puZge+BOEbral6OxdR228ww6nL5Wg3xo4VRyJsPsaOnU/PFkxQI8RgQpD8MQw2vQKU+jh/nRJ9hrOVtih3kRzc4RfddnYzirx2RvIxJ88FVHo+5cPnNZKhYL4lzq5p82vCY5HNYa2hdMr8+zN9whhDbA9Wh36pIDTkW1SsaQ2dZzRrcioopCPwlxK7P+ylQvfU5rlv68Us/w6/otTgwEwwj8LAT+pdSkXP0Eroo19t5DiUvpyLrdD/maH0g5Efv6Z1QpbyO8is96CXOtSufonUojJmuTyi+E/rLdky4Heiq1WF3HnEPfYsJvjaMO1++ytdWdNpxx0a8RYrbzlEsla6GyAmM0wzUM+fYP80goPVQKlQmm8iPjkm9JnoacKHThlG3FzMuGy58SHO8dgmjET6JwgRZ4WCL05CUko6k1O1IStsOddoLhFr8RqL4VwjOn1FVVogd6S9CvacYH9XfhsDiMvwPcMN0BHt2UZ44ufvKcfUey1H8zHvIZet2FULfNAKhtwJq/Xf4S147O4KvpNo7Ck/gxiTFrHW8ThWdlEiPdWcQcFVPcdPtVb4ck3oJljpo9+Xzuur0fBQdq8NPTpkrQsEECdCml6SNLwbCeCJhgWE5RAhjnp7PCxTLQfrfTWJwESgwtxSCzx+CdzFICMFDT8+a59aHggnCTgQTw0tiPH4SxMxCENMEYT4It4SpOQJ7SpicW9myULCrMUuCMDGYEFMUHJ9dwUPfCh54A3B5V+D0BOCk5xh7RsDiWxMKJsgjEoSdhonZIIkQwP3HAdx7FIBjJoA/CL9PL+OuQGDP6QBG6X0rQ8FOCBOktbU1AQkKdmXYCWGOx+NJwOPB3/j8QpDmkRYAAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NSelectItem.Target>
+            </uix:NSelectItem>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAAGgAAABoAaPmejwAAAInSURBVFhHxZfBVcMwDIY7QkdgBEZghI7QMydG6AiM0PdYgCNHRuA9FugIbBD+z7Vc2VZCWgI5fM+OJMuSpbjpZhiGm9i8nPbiS5zEQ2Qzh1A4BZuJdzEIAmAEZHfRmilCYQTOxTFvBs9iK5C/ZhkcxDbyEREKPTjLTi1bMr13urSZRk7mQ2CD7d77GSMUGnKyE9QYp4w7p7OgkJfNNH/KctYQ0GR/xEJlKHydD05HphaUB/u0mUZOhhKZjhKF/VE/nBf6OjMv9dSczjcdJ8BIln5NyVhz+qNKRFT9cZn0dW6zSfUWbJay0Zhs85xTO7r52KnVJXNGvfKcsQVVHDp9CaCR24ngL+obPWaZU5ZNNM7q6KyPAuCk2hO1U0slKbZlUgdgdYOSQUvWdwEY0lmfdL6LTZkERo6wi7MuOoHotrwpAN/FSS/8W4GsBIBOdG9Rnl8fgNP5Li49wShSiTS2NU+3Zdb9LgBDMn/LYUNgo7elW3ddAFPIhiP1txwQVFWeMWSzSADAZcMasqZXYJkAWiNDMitBajxsmvkyJeiM+ia0xvMBLN+EYt3X0LHaRQSrXMVksMqPEY222s9xG/H/fpBkQ9sAQ0hd7PRLfJJxlzwWG5t4ZEAG1UKn89l4olMzXXqLMm/is/izSYQMF/8s1zM+L5eUV0bImGza/vifPyYeOeT4fK2tMZH/3V+zFjmPbjlA1t2WPxEK56DN7I6gB6o6z2fYfAMYDF0ZCKqA1wAAAABJRU5ErkJggg==" InformativeScreenshot="4c82efe5b46509e9b3620ee49d8c92cb.png" Selector="&lt;html app='chrome.exe' htmlwindowname='ASP._postlogout_aspx' title='Accounts Receivable - Navisphere® Carrier'/&gt;" Url="https://www.navispherecarrier.com/accounts-receivable" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

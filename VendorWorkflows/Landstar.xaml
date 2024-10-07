@@ -1,0 +1,1096 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="Landstar" this:Landstar.ClientComparisonConfidence="80" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:rr="clr-namespace:Remora.Results;assembly=Remora.Results" xmlns:s="clr-namespace:System;assembly=System.Private.CoreLib" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:sc="clr-namespace:System.Collections;assembly=System.Private.CoreLib" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:tapm="clr-namespace:Tafs.Applications.PostVerificationPortal.Models;assembly=Tafs.Applications.PostVerificationPortal" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="QueueItem" Type="InOutArgument(tapm:QueueItem)" />
+    <x:Property Name="Result" Type="OutArgument(rr:Result)" />
+    <x:Property Name="Iteration" Type="InArgument(x:Int32)" />
+    <x:Property Name="TotalQueueItems" Type="InArgument(x:Int32)" />
+    <x:Property Name="ClientComparisonConfidence" Type="InArgument(x:Int32)" />
+    <x:Property Name="SuggestAlias" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1425,4933</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal.Models</x:String>
+      <x:String>Remora.Results</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal.Errors</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>FuzzierSharp</x:String>
+      <x:String>FuzzierSharp.PreProcess</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>FuzzierSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.HashCode</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>Remora.Results</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Tafs.Applications.PostVerificationPortal</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.ViewModels</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>PostVerificationPortal3.Core</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Landstar" sap:VirtualizedContainerService.HintSize="1435,4868" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1373,141" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info">
+      <ui:LogMessage.Message>
+        <InArgument x:TypeArguments="x:Object">
+          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_2">"[" + Iteration + "/" + TotalQueueItems + "] Processing " + QueueItem.ReferenceNumber + " with Landstar...."</CSharpValue>
+        </InArgument>
+      </ui:LogMessage.Message>
+    </ui:LogMessage>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Always" DisplayName="Use Browser Chrome: Status Update - Add a Status Update" sap:VirtualizedContainerService.HintSize="1373,4576" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="IfNotOpen" ScopeGuid="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V1" WindowResize="Maximize">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="1339,4359" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="referenceNumber" />
+              <Variable x:TypeArguments="ui:UiElement" Name="clientNameElement" />
+              <Variable x:TypeArguments="x:Boolean" Name="strippedLetters" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:CommentOut DisplayName="Comment Out" sap:VirtualizedContainerService.HintSize="1277,52" sap2010:WorkflowViewState.IdRef="CommentOut_1">
+              <ui:CommentOut.Body>
+                <Sequence DisplayName="Ignored Activities" sap:VirtualizedContainerService.HintSize="731,1116" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Sequence DisplayName="Strip letters from reference number" sap:VirtualizedContainerService.HintSize="689,1024" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="s:Char[]" Name="resultArray" />
+                      <Variable x:TypeArguments="x:Int32" Name="index" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap2010:Annotation.AnnotationText="Result array can only be as long as the initial load number. Initialize a char array of that size." sap:VirtualizedContainerService.HintSize="647,117" sap2010:WorkflowViewState.IdRef="Assign_2">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="s:Char[]">
+                          <CSharpReference x:TypeArguments="s:Char[]" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">resultArray</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="s:Char[]">
+                          <CSharpValue x:TypeArguments="s:Char[]" sap2010:WorkflowViewState.IdRef="CSharpValue`1_35">new char[QueueItem.ReferenceNumber.Length]</CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <Assign sap2010:Annotation.AnnotationText="This number keeps track of the index we are writing to resultArray" sap:VirtualizedContainerService.HintSize="647,102" sap2010:WorkflowViewState.IdRef="Assign_3">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Int32">
+                          <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">index</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Int32">0</InArgument>
+                      </Assign.Value>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </Assign>
+                    <ui:ForEach x:TypeArguments="x:Char" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="647,533" sap2010:WorkflowViewState.IdRef="ForEach`1_3">
+                      <ui:ForEach.Body>
+                        <ActivityAction x:TypeArguments="x:Char">
+                          <ActivityAction.Argument>
+                            <DelegateInArgument x:TypeArguments="x:Char" Name="character" />
+                          </ActivityAction.Argument>
+                          <If DisplayName="If char is between 0 and 9 inclusive" sap:VirtualizedContainerService.HintSize="611,410" sap2010:WorkflowViewState.IdRef="If_1">
+                            <If.Condition>
+                              <InArgument x:TypeArguments="x:Boolean">
+                                <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_8">character &gt;= '0' &amp;&amp; character &lt;= '9'</CSharpValue>
+                              </InArgument>
+                            </If.Condition>
+                            <If.Then>
+                              <Sequence sap:VirtualizedContainerService.HintSize="304,253" sap2010:WorkflowViewState.IdRef="Sequence_6">
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,60" sap2010:WorkflowViewState.IdRef="Assign_4">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Char">
+                                      <CSharpReference x:TypeArguments="x:Char" sap2010:WorkflowViewState.IdRef="CSharpReference`1_4">resultArray[index]</CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Char">
+                                      <CSharpValue x:TypeArguments="x:Char" sap2010:WorkflowViewState.IdRef="CSharpValue`1_9">character</CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                                <Assign sap:VirtualizedContainerService.HintSize="262,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                                  <Assign.To>
+                                    <OutArgument x:TypeArguments="x:Int32">
+                                      <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">index</CSharpReference>
+                                    </OutArgument>
+                                  </Assign.To>
+                                  <Assign.Value>
+                                    <InArgument x:TypeArguments="x:Int32">
+                                      <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_38">index + 1</CSharpValue>
+                                    </InArgument>
+                                  </Assign.Value>
+                                </Assign>
+                              </Sequence>
+                            </If.Then>
+                            <If.Else>
+                              <Assign sap2010:Annotation.AnnotationText="If we find a letter, we simply neglect to record it in our character array, resultArray. Set the flag which indicates we modified the LoadNumber." sap:VirtualizedContainerService.HintSize="262,132" sap2010:WorkflowViewState.IdRef="Assign_6">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Boolean">
+                                    <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">strippedLetters</CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                            </If.Else>
+                          </If>
+                        </ActivityAction>
+                      </ui:ForEach.Body>
+                      <ui:ForEach.Values>
+                        <InArgument x:TypeArguments="sc:IEnumerable">
+                          <CSharpValue x:TypeArguments="sc:IEnumerable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_36">QueueItem.ReferenceNumber.Reverse()</CSharpValue>
+                        </InArgument>
+                      </ui:ForEach.Values>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                    </ui:ForEach>
+                    <Assign DisplayName="Recreate the Load Number" sap:VirtualizedContainerService.HintSize="647,60" sap2010:WorkflowViewState.IdRef="Assign_7">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_7">referenceNumber</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_40">new string(resultArray.Reverse().ToArray())</CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </Sequence>
+              </ui:CommentOut.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </ui:CommentOut>
+            <Sequence DisplayName="Strip Prefix and Suffix from Ref" sap:VirtualizedContainerService.HintSize="1277,881" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+              <If DisplayName="If the reference number has a space or a tab, grab the body." sap:VirtualizedContainerService.HintSize="510,766" sap2010:WorkflowViewState.IdRef="If_2">
+                <If.Condition>
+                  <InArgument x:TypeArguments="x:Boolean">
+                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_43">QueueItem.ReferenceNumber.Contains(' ') || QueueItem.ReferenceNumber.Contains('-')</CSharpValue>
+                  </InArgument>
+                </If.Condition>
+                <If.Then>
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,292" sap2010:WorkflowViewState.IdRef="Sequence_9">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_19">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_23">referenceNumber</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_41">QueueItem.ReferenceNumber.Split(' ', '-').FirstOrDefault(x =&gt; x.All(c =&gt; c &gt;= '0' &amp;&amp; c &lt;= '9'))</CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_20">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">
+                          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_24">strippedLetters</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">True</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </If.Then>
+                <If.Else>
+                  <Sequence sap:VirtualizedContainerService.HintSize="476,292" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_21">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:String">
+                          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_25">referenceNumber</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:String">
+                          <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_44">QueueItem.ReferenceNumber</CSharpValue>
+                        </InArgument>
+                      </Assign.Value>
+                    </Assign>
+                    <Assign sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_22">
+                      <Assign.To>
+                        <OutArgument x:TypeArguments="x:Boolean">
+                          <CSharpReference x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpReference`1_26">strippedLetters</CSharpReference>
+                        </OutArgument>
+                      </Assign.To>
+                      <Assign.Value>
+                        <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                      </Assign.Value>
+                    </Assign>
+                  </Sequence>
+                </If.Else>
+              </If>
+            </Sequence>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Landstar Freight'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1277,254" sap2010:WorkflowViewState.IdRef="NTypeInto_1" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V1">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="889, 262, 107, 21" ElementType="InputBox" FriendlyName="'7337967'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='text' aaname='Enter your Landstar reference (freight bill) number.' /&gt;" Guid="71d813df-a9a4-40c9-8d9a-23cb65911692" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG8AAAAZCAYAAAA/vnC8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG7SURBVGhD7ZbbEYQgDEXtkG62BUuhFEvx0xJYCYIJhJdfxsmdycwuQnBycsHlOA6nITMUnuAg8H6/n8bLA/NK8PwD1fuFASo8YVJ4gqXwBGsQ3ubWZXFLEev5JGi3hh0HbSt6Zpzdr3G3O2viOA40Z7fOcOOXyL7GnhmZcRQmTyBYD50Xip4KAXBuYNuKCgnFv4seiprBRYK1a8oETZP2gVxoLex756ZrM2Xv+AU9ggcAUJcXahUqg0mUr2PyeECRj/895qTQBDWuUvUAXr8QLQfUwWdu9qrAC3PGgXSbTaim4TULAcX2dwvjLHR3sQXn3HqtocdmbAwP79xnu/Py7/VN13lNwmPcwQlAVI7GC0BezKpbU0MEODbNC1BuYNfHT5m4bIqPaBLe1e0ddj3IJagwn2NHhfMyjmJAwUnRTyxSc/CGu7h1VDFgWx8xRDgvA9y/Hzk6200kXVPwql2cQYV58X8OBuZmoIqiR1Gng2PRPHr/cqBGTwqZmoLX/Yr0dxAEAyc9Kx1JIWQia0vXk33LxIOOlqkpeKp3SeEJlsITLIUnWApPsFh4EaDGuwPzIvA0ZIXCExuH+wPayLVYJJwr1QAAAABJRU5ErkJggg==" InformativeScreenshot="efa16ba6f866df865173778ca55d777a.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Status Update - Add a Status Update' /&gt;" SearchSteps="FuzzySelector, Image">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="201, 261, 682, 22" ElementType="Text" FriendlyName="'Landstar Freight'" FullSelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl tableRow='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='Landstar Freight Bill/Reference Number' check:text='Landstar Freight Bill/Reference Number' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAq4AAAAaCAYAAAB2O95MAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVdSURBVHhe7dxNbtw4EIbhnM+nyQl6k0MYBnwL73KBBN4Y8CpBVjmBj6BRiyyq+LHIlpL2pJW8AzzAqCkV/9rgNxonH6b5n4eHh+nt7Q0AAAC4WQRXAAAAHALBFQAAAIdAcAUAAMAhEFwBAABwCARXAMAx/Xid7j5+nT7cf4/br+r7dDr39el1+ha2v6/P93Pf5/7VL87929Pz8vzpS9xe+8252z4FfP9pjs/T4w/3TJ5fO96f0+Onr9Pd08/N9cfyHBcv0+fwnttn35NlXezzd/05+f9/LgiuAIBjuungOt9/xcO8CnVB+17XD66D+Yb7lIKnn9Ou4Lq0x/fW9beF0H3rcbvW/8Bx837XnxOCKwAA27zrgaz2HNDXP8yvHVz3uTSfC+2dfRqGRXmmuffLyxrOfqW++PuCq1sPgisAADfg4oFsb92MC37l2Vd3Tx0MLcyc3T29Ngd0FRJmKfT0+swHfLG+ESuh6f4cxua2YD7j4Grh4WU6VW8xZSyubhwE832ljo3R6j+nNVt0+ojGGO5T+0a0mqM8o+Ndrm0vOt+DZo52X1bVcp9bnWp/fTAr/c3rtLRLgM5Kv6XWPLcnt87VeOX7UQXB/j6q+ju5bS1t79OvF6z78ujXZX7W115/FWENro+u3c99y7qc7lNf1a84dBBcAQDHJAeySoeihi8JOxo6rFbnsC/P58M+HcIawqQva9e+tXZnHmcl+GgoXFjo8e0yptynBYM6vMh4S4iV+ZT6Oj+9FmWtW1GIuRy20txKyJF7k3j+db11ver6ut55fla/zMfWx33WqZ/qrWMO64ffj/E+qlLXAvK5Rjg2t/ZhcK3Xum2XsZfrfeuu67IFwRUAcExyKMbWg3fRCY8aHprDXcOFf0PZ9C/36ufyXNtXyw74Wif4nDXzy+sQza8KLu5eDa6l/qV20dmnYZgLA4+tUeqvrJfd21iDZbPG+RnrO6rv55PGFoexLfWruen9zfo7TV/1Pur9vh9b39NTXaMZaxhcNVz2rtu18vX3rssWBFcAwDEFAcKzgzu1ywHbPFu3tweqHtB2wDulrX/vcmBL383hHhgf8G14KH00UvgahouLwfRSu+jtk3xezXG0RkubW4vOvX485TMV7kGeTyMe25b6un++v7pvYX011lDuhWtowrnOwuC61tex19fB3rt6e9dlC4IrAOCYggCx0gNVrptn6/Y2TAQHtHEBIR3+F/qS62FwycYHfDC24dpIn3/ojat+HoauYI3Sv7vg1tS38a1zurTGdfv++Vyqr/tX3b/rjeuY9pOus2Atl+euHFx9/b3rsgXBFQBwTMNDPR+o+QC2A7QcsM2zcgBLuz7fO/zTdT78tVa+LmGiFyQC4wM+CloSQDrzSX3K83ku/WCq4Ubmqzr7pPOu5jgY73KfrxXVt8821Iuu6/Uefzeq/jr1df/qdl3ffL3UGu+jar8nuZZ/RoJyeuY3g+sszWXP9y4a72UEVwDAMdmhGFgOxhLAzl6m03JI9gKAhof6+ehvFbBDeL1nfWPm285jqe61P7Wfa+lhHhkf8MHYFxYismDspU+/VuVvWrDwovXbcKPzXccwG+yTX7Nqjt3Ak/r2z7V7mZQx2bhlHNF++bGn8Zh1rr3+RvV1/9r+XMA8q/ayv48q+p6UdSjj9fXme/Mf5ErjbfdWa9bX9t2wv4mivnexY122ILgCAAAnh5dBQAL+FIIrAAD/svJGTN6w6htF4AYQXAEA+MeV/51seNuKG0VwBQAAwCEQXAEAAHAIBFcAAAAcAsEVAAAAh0BwBQAAwCEQXAEAAHAIBFcAAAAcAsEVAAAAB/A2/Qc5MyF4sZtcJgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.Text>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">referenceNumber</CSharpValue>
+                </InArgument>
+              </uix:NTypeInto.Text>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NTypeInto ActivateBefore="True" ClickBeforeMode="Single" DisplayName="Type Into 'Landstar Carrier'" EmptyFieldMode="SingleLine" sap:VirtualizedContainerService.HintSize="1277,254" sap2010:WorkflowViewState.IdRef="NTypeInto_2" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V1">
+              <uix:NTypeInto.Target>
+                <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="889, 307, 107, 21" ElementType="InputBox" FriendlyName="'01292066'" FullSelectorArgument="&lt;webctrl id='mcNumber' tag='INPUT' type='text' /&gt;" FuzzySelectorArgument="&lt;webctrl id='mcNumber' tag='INPUT' type='text' aaname='' /&gt;" Guid="903097fc-cbd1-4dc5-bbd8-fb26f43833ae" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAG8AAAAZCAYAAAA/vnC8AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHiSURBVGhD7Zb/zYQgDIbZkG1uBUZxFEa5Px2BA4raH4iYL/lCk75Jk8O2WPsUPbfvezrs8/mYLW6YF4Fnpsvs5CkzzOuEVxym9YUBGjxlMniKZfAU6xW8GFxyDizEdpErhuT8lr5tWfTd/JnXy8X7OuZ8kytriikMcsnerGYNmodXoLiQ28F+Y9XrrBE8tq592loANPDyFxj+cD7kEj+PzRVsPtdyEPtuyYvca12HQNJfWtPw6MNBY/CzwgnwKYQMYzjFcBogF/Y5YRWVJt/m49yHmiosDJOKDIlSTcLjTZZNjxHaVE/SX+HdNn2US9fjOugQaNUrePhh7yb3CV7vNSnX6PWGRHPHNdXY7IT9wK7YAi/fI5ZBaf7hwK2p/4VXvzN84mHvs8Eb+zYdErkT8HA8+cbBybvqbDXQwpbXK3gXLL6+dAuvC66jGsdemwPodzXJOrC/89rs3XdxTcIrzyYb1QPRhUemfiyRP8gd1lTyOvDA36lfxK+vaXjQxDaZ+DeTaH79A9IHXVTjDyePfcgd18ROF/PTOvGp1KN5eFn9jz8Vh1fXLQcbPzHy+kzuU03t21ZNnl6y/+2ErKtX8ExryeAplsFTLIOnWAZPsbrwDoBmaxvmReCZ6TKDp9b29ANEtbC1CJoDUgAAAABJRU5ErkJggg==" InformativeScreenshot="6c9baa3f9105cf02738ff8fc2dab9f57.png" IsResponsive="True" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Status Update - Add a Status Update' /&gt;" SearchSteps="FuzzySelector, Image">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="201, 306, 682, 22" ElementType="Text" FriendlyName="'Landstar Carrier'" FullSelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableRow='5' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' tag='TD' aaname='Landstar Carrier M/C Number' check:text='Landstar Carrier M/C Number' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAq4AAAAaCAYAAAB2O95MAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARmSURBVHhe7dxBbtswEIXhnM+nyQm8ySGMALlFdrlAi2wMZNWgq54gR1ApkkPOjEaW3LppCPwFPhSSyCE58uLVbXo3pV+Pj4/Tx8cHAAAA8GURXAEAADAEgisAAACGQHAFAADAEAiuAAAAGALBFQCAIb1Px/vv093D2/QjfH5Lv6anh7TW/Xl6CZ9/jpfTvAflH5y9rPE6Pf2Mn1/l27nv9fSuntV3l6me5vG6x9J3xdSxpD+H51/9/s+36bAx78995mewILgCADCkrx1cX043Cn9ZtL6Ev9uG6X8WXPV70vfV/vPaLWAG71dC6Mo778Fe9YTgCgAA/r+vG1xvGv6SH8+vN633aUxA7fuX8xxMT0uP5dvS0sPrQnkProkEVYIrAAD4/3aEBhOcdHjpc59U2Dl+W5l7SuNccC3hq8+VwBXf93/lrUJoC1bnsqdFWNsfmtf21M+b1si1yvoSsI+nMm8evwjdK+FzrabsRc89pLPNZzS9aPPkXKVeeQc73m3ABFfZjwuu0qP2rmWP5j2dpyfdyzRX11729cLnSNYPnkX9b/NWEFwBABjSRripgUHCgA0sdW4LW76Wu27hrYYsV9uHvfjaBrRWuwWbtWC6cU5R9yjByO7Bn1ePsYHJzDOhbuUcrqbR5r+VsTk8lnmH53cbyPNY299rvyVte3+u72ue72rtC67yvF/b52t97cE3OkdZu/cr6v8WgisAAEO6LtAJE1zbXBc4XGBbDSSmRmfCX7vfQ5CZtxnSdp6zst+6uoDlakT71PcWz2tf4h4GVB9LrdS/VsP2NO97d09iy72ndVJovj649jP7HtjrZQ90/cVa9VzyufK19yC4AgAwpI3g1MJlCQY2RPi5QYhqY5fP53sSjDr/zIedJIcnt/ZmSFuuHaoBTMZtBaxZFJz0vbZvpwSvjf7PVCgsPdX/rtWeK6/VerCjdsCcp73/6qrguvUuL/R1ceZ5vFP34mvvQXAFAGBIl8ONDyj22s91gcWEmeC5UWvNwkDi13LXO75dlNB3KeBcHbCCOf5e9LyLaxq6jzpI5jm6p6VW77esHfV7nd9vua4+Kbjq+ou1HF97D4IrAABDuhycJDSUQFLHthDh5/rA4p7XcNOe+2BbQ5lc26Apa5e5sq9We0dwjYOzrSshLZ+vhcT1gDWLgpO55865FdoWzHzZr1yrM+X92n2E9eVcK2suz9PXbP0NzxTsaaVm2IOkfK7cfPdufZBd7ncbwRUAgCGpUOLYEFLvmZ9s96EoCIYt/CXB/yrQw6yMUcHTzE33zdjzdMyBJQ43l0jIakyAs/04pvPm38OgruvZ4LS4584poWutphGGRKmtep7Hqd429h1mF/oUnaf9QaHN0zXT2PqDXH8VXNv/kGDHZvqz0NaJau1DcAUAAMAQCK4AAAAYAsEVAAAAQyC4AgAAYAgEVwAAAAyB4AoAAIAhEFwBAAAwBIIrAAAAhkBwBQAAwBAIrgAAABgCwRUAAAAD+Jh+A3iwupfyg9zjAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NTypeInto.Target>
+              <uix:NTypeInto.Text>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_4">QueueItem.MotorCarrierNumber</CSharpValue>
+                </InArgument>
+              </uix:NTypeInto.Text>
+              <uix:NTypeInto.VerifyOptions>
+                <uix:VerifyExecutionTypeIntoOptions DisplayName="{x:Null}" Mode="Appears">
+                  <uix:VerifyExecutionTypeIntoOptions.Retry>
+                    <InArgument x:TypeArguments="x:Boolean" />
+                  </uix:VerifyExecutionTypeIntoOptions.Retry>
+                  <uix:VerifyExecutionTypeIntoOptions.Timeout>
+                    <InArgument x:TypeArguments="x:Double" />
+                  </uix:VerifyExecutionTypeIntoOptions.Timeout>
+                </uix:VerifyExecutionTypeIntoOptions>
+              </uix:NTypeInto.VerifyOptions>
+            </uix:NTypeInto>
+            <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Click 'Submit'" sap:VirtualizedContainerService.HintSize="1277,157" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V1">
+              <uix:NClick.Target>
+                <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="912, 392, 58, 21" ElementType="Button" FriendlyName="'Submit'" FullSelectorArgument="&lt;webctrl tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='INPUT' type='submit' aaname='Submit and save the status update returning to the previous screen.' check:text='Submit' /&gt;" Guid="029d7050-8384-42ef-a6a2-c6eba7c48d55" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAAZCAYAAABpaJ3KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVFhH7Zi9jYUwEIQpiCqgBCqgAUICcloAiZSUnJyQHkhfSgm+m6cba9/KiB8dOg6z0ggtu8bzYYwEgfE0HnBE27amrmuT5/mtBCawybDgKHRdZ+Z5vqXAJuEtOO6Ka8CdVFXVD60AxyPhar6TwMh4wLeAv14vk6apCYLAqu97Z69LRVG85art0TiOJoqi99FVX9IhcEJL49M0mTiON8OfAb7HwyHwpQmaptkM81vgUqeDu1ZcSz+C2hTGZllmtwtq6EENPcjLsvzYRhijtxXnGYbhY+utwR8ChzBhGIZ2Iqy2rq+BS4PIYRw3FefkNXFc6pXznL7iWjQmzW0Bp3ndjx7XE8Ac810CnIIhGpSGUHOBQxyLepIk1wbHheVqyfNHwWW/BtX5n4FzAmkcJmCG59gDk8hhRu9TvCN4Y5AT5rLgEEG5tyFCUshZ4xtcgq+91feC87ouL1qHwf+7HvDveMB9+B4HI8OCe/sHBoGCd//cfAtPwY35Ap+eOpNBiStQAAAAAElFTkSuQmCC" InformativeScreenshot="23675bfe51bae268308e1284f2b40463.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Status Update - Add a Status Update' /&gt;" SearchSteps="FuzzySelector, Image" />
+              </uix:NClick.Target>
+            </uix:NClick>
+            <uix:NCheckState DisplayName="Check for error message" sap:VirtualizedContainerService.HintSize="1277,2446" sap2010:WorkflowViewState.IdRef="NCheckState_1" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Timeout="2" Version="V1">
+              <uix:NCheckState.IfExists>
+                <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="727,2229" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <Sequence.Variables>
+                    <Variable x:TypeArguments="x:String" Name="theirClientName" />
+                    <Variable x:TypeArguments="x:String" Name="theirReferenceNumber" />
+                  </Sequence.Variables>
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <uix:NGetText DisplayName="Get Text 'Freight Bill/Reference'" sap:VirtualizedContainerService.HintSize="665,157" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V1">
+                    <uix:NGetText.Target>
+                      <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="254, 245, 304, 16" ElementType="Text" FriendlyName="'7337967'" FullSelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' /&gt;" Guid="2fd44e30-5d7e-4ec4-be18-b8f9a5637046" InformativeScreenshot="fdf3a7de15f925fb9789e09a5b15dacf.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='DGI 7337967 - Status Update - Select Status' /&gt;" SearchSteps="FuzzySelector">
+                        <uix:TargetAnchorable.Anchors>
+                          <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                            <uix:Target DesignTimeRectangle="29, 245, 225, 16" ElementType="Text" FriendlyName="'Freight Bill/Reference'" FullSelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='Container' tag='TABLE' /&gt;&lt;webctrl tag='TD' type='' aaname='Freight Bill/Reference' check:text='Freight Bill/Reference' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOUAAAAUCAYAAAByB/qqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALtSURBVHhe7ZbdjesgEEZTn6u5FdBHJFfiCvbhFuCXW0NK4DrAwMzHAPYqVpxoVjrSOsPPAHOwb377u9/v/v73n7/9+TEM491wKQ3DeD9ZysfjYRjGBTApDeNimJSGcTFMyhNZ3M3fbgpuUduPWOcp9HeLHpcs3j3nmma/qvERqb/CNK+5ncxJzqnlG357xtfZT2k8ZN/6nqx+nqjf5OdVa/N5mJQnEqV8XbG8XsqtTTOu96eLhnI4JmWUKEhNUooLiiRzfsm/dVhcGJ9fEt+ASXkir5byGCMpfxnvijCSMsbDsyrlwYvHpDSOMpKS4s7FQozFxT/JZNG2ijy2LePEOAkysc9EygXmUHPUpcQ1HXpTBhFT391SNvYjCZmhPMXvfF2Um9u+DlgMPqPLvGytMxsT8o1tCD4fxPBy62BSnggWsB7nNz18vqWCoTgWrBy/CCoEwXguDnxGyngIfzMdkTI803yqlPj52t+P6k0Jz3F/aCzcjzIe5RDzLXE8HzxP+SxzVc8GhG5hUp4IHaqkdagbVaGmg1aLvJaqH8eCr/tL9DjNIQt5n5RhvbQ2WmsF5cfaNPZDl5DtZ4rv268NkB7H6+8vp47FsdjaOpiUJ1IVySg+KFRRFFXBjormNVLi7705ZSzOn99qkD+1FfMN9kOXsibG6/XkOZGUU1dKZf8Laa6Kdi1wTMoT+bWU6kH3BRjH3yxlWltsV57LWim/trgVozeloF6PzL2mK2V3/3qxMSbliRyWEsWBosQikv1TIeQ4FgZKmZ6bhdMoLBBht5ShH829oQlHv+U19fcDc+lLqqzn0P6O4/E55jqcu4NJeSJ4aPvi5Y0RYAeJRZEPO+D83BGklrKMJ8ck+NgAE0nmJOfksfB/Rwgcr847wcdAKdlvRLVXvP+TfBFE+Fh4PnKtvA0hz1LG2IU0wKT8ImLRtC8B4zMwKT+W8gahmzvezPtvZOOamJSfDHx62VvyOzApDeNimJSGcSke/j9V8uXUmrZFWgAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                          </scg:List>
+                        </uix:TargetAnchorable.Anchors>
+                      </uix:TargetAnchorable>
+                    </uix:NGetText.Target>
+                    <uix:NGetText.Text>
+                      <OutArgument x:TypeArguments="x:String">
+                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_10">theirReferenceNumber</CSharpReference>
+                      </OutArgument>
+                    </uix:NGetText.Text>
+                  </uix:NGetText>
+                  <uix:NGetText DisplayName="Get Text" sap:VirtualizedContainerService.HintSize="665,137" sap2010:WorkflowViewState.IdRef="NGetText_1" Version="V1">
+                    <uix:NGetText.InUiElement>
+                      <InArgument x:TypeArguments="ui:UiElement">
+                        <CSharpValue x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpValue`1_13">clientNameElement</CSharpValue>
+                      </InArgument>
+                    </uix:NGetText.InUiElement>
+                    <uix:NGetText.Text>
+                      <OutArgument x:TypeArguments="x:String">
+                        <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">theirClientName</CSharpReference>
+                      </OutArgument>
+                    </uix:NGetText.Text>
+                  </uix:NGetText>
+                  <Flowchart DisplayName="Verify Invoice" sap:VirtualizedContainerService.HintSize="665,1543" sap2010:WorkflowViewState.IdRef="Flowchart_1">
+                    <Flowchart.Variables>
+                      <Variable x:TypeArguments="x:Int32" Name="clientConfidenceScore" />
+                      <Variable x:TypeArguments="rr:Result(scg:Queue(x:String))" Name="crossReferenceResult" />
+                      <Variable x:TypeArguments="scg:Queue(x:String)" Name="crossReferences" />
+                      <Variable x:TypeArguments="x:String" Name="name" />
+                      <Variable x:TypeArguments="x:String" Name="contractor" />
+                    </Flowchart.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        <av:Point x:Key="ShapeLocation">100,2.5</av:Point>
+                        <av:Size x:Key="ShapeSize">60,75</av:Size>
+                        <av:PointCollection x:Key="ConnectorLocation">130,77.5 130,127.5</av:PointCollection>
+                        <x:Double x:Key="Width">630.895</x:Double>
+                        <x:Double x:Key="Height">1506.5</x:Double>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <Flowchart.StartNode>
+                      <x:Reference>__ReferenceID21</x:Reference>
+                    </Flowchart.StartNode>
+                    <FlowDecision x:Name="__ReferenceID21" DisplayName="Scraped Values" sap:VirtualizedContainerService.HintSize="84,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
+                      <FlowDecision.Condition>
+                        <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_14">!(theirReferenceNumber == null || theirClientName == null)</CSharpValue>
+                      </FlowDecision.Condition>
+                      <sap:WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          <av:Point x:Key="ShapeLocation">88,127.5</av:Point>
+                          <av:Size x:Key="ShapeSize">84,87</av:Size>
+                          <av:PointCollection x:Key="FalseConnector">172,171 202,171 202,166.5 242,166.5</av:PointCollection>
+                          <av:PointCollection x:Key="TrueConnector">88,171 70,171 70,236.5 130,236.5 130,266.5</av:PointCollection>
+                        </scg:Dictionary>
+                      </sap:WorkflowViewStateService.ViewState>
+                      <FlowDecision.True>
+                        <FlowDecision x:Name="__ReferenceID2" DisplayName="Reference Number Match" sap:VirtualizedContainerService.HintSize="142,87" sap2010:WorkflowViewState.IdRef="FlowDecision_2">
+                          <FlowDecision.Condition>
+                            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_16">referenceNumber == theirReferenceNumber</CSharpValue>
+                          </FlowDecision.Condition>
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              <av:Point x:Key="ShapeLocation">59,266.5</av:Point>
+                              <av:Size x:Key="ShapeSize">142,87</av:Size>
+                              <av:PointCollection x:Key="FalseConnector">201,310 400,310 400,346.5</av:PointCollection>
+                              <av:PointCollection x:Key="TrueConnector">59,310 40,310 40,360.00000000000006 100,360.00000000000006 100,390</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <FlowDecision.True>
+                            <FlowStep x:Name="__ReferenceID6" sap2010:WorkflowViewState.IdRef="FlowStep_1">
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <av:Point x:Key="ShapeLocation">0,390</av:Point>
+                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                  <av:PointCollection x:Key="ConnectorLocation">100,442 100,472.00000000000006 131,472.00000000000006 131,531</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <Assign sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_12">
+                                <Assign.To>
+                                  <OutArgument x:TypeArguments="x:Int32">
+                                    <CSharpReference x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpReference`1_15">clientConfidenceScore</CSharpReference>
+                                  </OutArgument>
+                                </Assign.To>
+                                <Assign.Value>
+                                  <InArgument x:TypeArguments="x:Int32">
+                                    <CSharpValue x:TypeArguments="x:Int32" sap2010:WorkflowViewState.IdRef="CSharpValue`1_20">Fuzz.Ratio(QueueItem.ClientName, theirClientName, StandardPreprocessors.Full)</CSharpValue>
+                                  </InArgument>
+                                </Assign.Value>
+                                <sap:WorkflowViewStateService.ViewState>
+                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  </scg:Dictionary>
+                                </sap:WorkflowViewStateService.ViewState>
+                              </Assign>
+                              <FlowStep.Next>
+                                <FlowDecision x:Name="__ReferenceID7" DisplayName="Client Name Match" sap:VirtualizedContainerService.HintSize="109,87" sap2010:WorkflowViewState.IdRef="FlowDecision_4">
+                                  <FlowDecision.Condition>
+                                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_21">clientConfidenceScore &gt;= ClientComparisonConfidence</CSharpValue>
+                                  </FlowDecision.Condition>
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      <av:Point x:Key="ShapeLocation">76.5,531</av:Point>
+                                      <av:Size x:Key="ShapeSize">109,87</av:Size>
+                                      <av:PointCollection x:Key="TrueConnector">76.5,574.5 46.5,574.5 46.5,634.02 130,634.02 130,664.02</av:PointCollection>
+                                      <av:PointCollection x:Key="FalseConnector">185.5,574.5 215.5,574.5 215.5,604.02 370,604.02 370,634.02</av:PointCollection>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <FlowDecision.True>
+                                    <FlowStep x:Name="__ReferenceID8" sap2010:WorkflowViewState.IdRef="FlowStep_2">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">30,664.02</av:Point>
+                                          <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">130,716.02 130,746.02 100,746.02 100,765.02</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info">
+                                        <ui:LogMessage.Message>
+                                          <InArgument x:TypeArguments="x:Object">
+                                            <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_22">"Matched '" + QueueItem.ClientName + "' to '" + theirClientName + "' with a confidence score of " + clientConfidenceScore + "%"</CSharpValue>
+                                          </InArgument>
+                                        </ui:LogMessage.Message>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:LogMessage>
+                                      <FlowStep.Next>
+                                        <FlowStep x:Name="__ReferenceID9" sap2010:WorkflowViewState.IdRef="FlowStep_3">
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <av:Point x:Key="ShapeLocation">0,765.02</av:Point>
+                                              <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <Assign sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_13">
+                                            <Assign.To>
+                                              <OutArgument x:TypeArguments="rr:Result">
+                                                <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_16">Result</CSharpReference>
+                                              </OutArgument>
+                                            </Assign.To>
+                                            <Assign.Value>
+                                              <InArgument x:TypeArguments="rr:Result">
+                                                <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_23">Result.FromSuccess()</CSharpValue>
+                                              </InArgument>
+                                            </Assign.Value>
+                                            <sap:WorkflowViewStateService.ViewState>
+                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              </scg:Dictionary>
+                                            </sap:WorkflowViewStateService.ViewState>
+                                          </Assign>
+                                        </FlowStep>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowDecision.True>
+                                  <FlowDecision.False>
+                                    <FlowStep x:Name="__ReferenceID10" sap2010:WorkflowViewState.IdRef="FlowStep_4">
+                                      <sap:WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                          <av:Point x:Key="ShapeLocation">270,634.02</av:Point>
+                                          <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                          <av:PointCollection x:Key="ConnectorLocation">370,685.02 370,735.02</av:PointCollection>
+                                        </scg:Dictionary>
+                                      </sap:WorkflowViewStateService.ViewState>
+                                      <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Utilities\\NameCrossReference.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Utilities\\NameCrossReference.xaml">
+                                        <ui:InvokeWorkflowFile.Arguments>
+                                          <InArgument x:TypeArguments="x:String" x:Key="ClientName">
+                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_25">QueueItem.ClientName</CSharpValue>
+                                          </InArgument>
+                                          <InArgument x:TypeArguments="x:String" x:Key="ClientNumber">
+                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_24">QueueItem.ClientNumber</CSharpValue>
+                                          </InArgument>
+                                          <OutArgument x:TypeArguments="rr:Result(scg:Queue(x:String))" x:Key="Result">
+                                            <CSharpReference x:TypeArguments="rr:Result(scg:Queue(x:String))" sap2010:WorkflowViewState.IdRef="CSharpReference`1_17">crossReferenceResult</CSharpReference>
+                                          </OutArgument>
+                                        </ui:InvokeWorkflowFile.Arguments>
+                                        <sap:WorkflowViewStateService.ViewState>
+                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                          </scg:Dictionary>
+                                        </sap:WorkflowViewStateService.ViewState>
+                                      </ui:InvokeWorkflowFile>
+                                      <FlowStep.Next>
+                                        <FlowDecision x:Name="__ReferenceID11" DisplayName="Successful Get" sap:VirtualizedContainerService.HintSize="82,87" sap2010:WorkflowViewState.IdRef="FlowDecision_5">
+                                          <FlowDecision.Condition>
+                                            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_27">crossReferenceResult.IsDefined()</CSharpValue>
+                                          </FlowDecision.Condition>
+                                          <sap:WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                              <av:Point x:Key="ShapeLocation">329,735.02</av:Point>
+                                              <av:Size x:Key="ShapeSize">82,87</av:Size>
+                                              <av:PointCollection x:Key="FalseConnector">411,778.52 468.895,778.52 468.895,840</av:PointCollection>
+                                              <av:PointCollection x:Key="TrueConnector">329,778.52 299,778.52 299,850 198.89499999999998,850 198.89499999999998,880</av:PointCollection>
+                                            </scg:Dictionary>
+                                          </sap:WorkflowViewStateService.ViewState>
+                                          <FlowDecision.True>
+                                            <FlowStep x:Name="__ReferenceID13" sap2010:WorkflowViewState.IdRef="FlowStep_5">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">98.895,880</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                  <av:PointCollection x:Key="ConnectorLocation">198.89499999999998,932 198.89499999999998,962 229.895,962 229.895,991</av:PointCollection>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Assign sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_15">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="scg:Queue(x:String)">
+                                                    <CSharpReference x:TypeArguments="scg:Queue(x:String)" sap2010:WorkflowViewState.IdRef="CSharpReference`1_19">crossReferences</CSharpReference>
+                                                  </OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="scg:Queue(x:String)">
+                                                    <CSharpValue x:TypeArguments="scg:Queue(x:String)" sap2010:WorkflowViewState.IdRef="CSharpValue`1_28">crossReferenceResult.Entity</CSharpValue>
+                                                  </InArgument>
+                                                </Assign.Value>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </Assign>
+                                              <FlowStep.Next>
+                                                <FlowDecision x:Name="__ReferenceID0" DisplayName="Any Xref" sap:VirtualizedContainerService.HintSize="70,87" sap2010:WorkflowViewState.IdRef="FlowDecision_6">
+                                                  <FlowDecision.Condition>
+                                                    <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_29">crossReferences.Any()</CSharpValue>
+                                                  </FlowDecision.Condition>
+                                                  <sap:WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                      <av:Point x:Key="ShapeLocation">194.895,991</av:Point>
+                                                      <av:Size x:Key="ShapeSize">70,87</av:Size>
+                                                      <av:PointCollection x:Key="FalseConnector">264.895,1034.5 294.895,1034.5 294.895,1030.5 324.895,1030.5</av:PointCollection>
+                                                      <av:PointCollection x:Key="TrueConnector">194.895,1034.5 108.89499999999998,1034.5 108.89499999999998,1100</av:PointCollection>
+                                                    </scg:Dictionary>
+                                                  </sap:WorkflowViewStateService.ViewState>
+                                                  <FlowDecision.True>
+                                                    <FlowStep x:Name="__ReferenceID15" sap2010:WorkflowViewState.IdRef="FlowStep_6">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <av:Point x:Key="ShapeLocation">8.89499999999998,1100</av:Point>
+                                                          <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                          <av:PointCollection x:Key="ConnectorLocation">108.89499999999998,1152 108.89499999999998,1182 139.89499999999998,1182 139.89499999999998,1211</av:PointCollection>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Assign DisplayName="Get next alias" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_17">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="x:String">
+                                                            <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_21">name</CSharpReference>
+                                                          </OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="x:String">
+                                                            <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_31">crossReferences.Dequeue()</CSharpValue>
+                                                          </InArgument>
+                                                        </Assign.Value>
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </Assign>
+                                                      <FlowStep.Next>
+                                                        <FlowDecision x:Name="__ReferenceID16" DisplayName="Name Match" sap:VirtualizedContainerService.HintSize="75,87" sap2010:WorkflowViewState.IdRef="FlowDecision_7">
+                                                          <FlowDecision.Condition>
+                                                            <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_32">name.Equals(theirClientName, StringComparison.InvariantCultureIgnoreCase)</CSharpValue>
+                                                          </FlowDecision.Condition>
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              <av:Point x:Key="ShapeLocation">102.395,1211</av:Point>
+                                                              <av:Size x:Key="ShapeSize">75,87</av:Size>
+                                                              <av:PointCollection x:Key="FalseConnector">177.395,1254.5 294.895,1254.5 294.895,961 247.395,961 247.395,991</av:PointCollection>
+                                                              <av:PointCollection x:Key="TrueConnector">102.395,1254.5 80,1254.5 80,1314.5 140,1314.5 140,1344.5</av:PointCollection>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <FlowDecision.True>
+                                                            <FlowStep x:Name="__ReferenceID17" sap2010:WorkflowViewState.IdRef="FlowStep_7">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <av:Point x:Key="ShapeLocation">40,1344.5</av:Point>
+                                                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                                  <av:PointCollection x:Key="ConnectorLocation">140,1396.5 140,1426.5 109,1426.5 109,1445.5</av:PointCollection>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info">
+                                                                <ui:LogMessage.Message>
+                                                                  <InArgument x:TypeArguments="x:Object">
+                                                                    <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_33">"Matched '" + QueueItem.ClientName + "' to '" + theirClientName + "' as '" + name + "' using cross-reference lookup."</CSharpValue>
+                                                                  </InArgument>
+                                                                </ui:LogMessage.Message>
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  </scg:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                              </ui:LogMessage>
+                                                              <FlowStep.Next>
+                                                                <FlowStep x:Name="__ReferenceID18" sap2010:WorkflowViewState.IdRef="FlowStep_8">
+                                                                  <sap:WorkflowViewStateService.ViewState>
+                                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                      <av:Point x:Key="ShapeLocation">9,1445.5</av:Point>
+                                                                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                                    </scg:Dictionary>
+                                                                  </sap:WorkflowViewStateService.ViewState>
+                                                                  <Assign DisplayName="Verified" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_18">
+                                                                    <Assign.To>
+                                                                      <OutArgument x:TypeArguments="rr:Result">
+                                                                        <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_22">Result</CSharpReference>
+                                                                      </OutArgument>
+                                                                    </Assign.To>
+                                                                    <Assign.Value>
+                                                                      <InArgument x:TypeArguments="rr:Result">
+                                                                        <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_34">Result.FromSuccess()</CSharpValue>
+                                                                      </InArgument>
+                                                                    </Assign.Value>
+                                                                    <sap:WorkflowViewStateService.ViewState>
+                                                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                      </scg:Dictionary>
+                                                                    </sap:WorkflowViewStateService.ViewState>
+                                                                  </Assign>
+                                                                </FlowStep>
+                                                              </FlowStep.Next>
+                                                            </FlowStep>
+                                                          </FlowDecision.True>
+                                                          <FlowDecision.False>
+                                                            <x:Reference>__ReferenceID0</x:Reference>
+                                                          </FlowDecision.False>
+                                                        </FlowDecision>
+                                                      </FlowStep.Next>
+                                                    </FlowStep>
+                                                  </FlowDecision.True>
+                                                  <FlowDecision.False>
+                                                    <FlowStep x:Name="__ReferenceID14" sap2010:WorkflowViewState.IdRef="FlowStep_9">
+                                                      <sap:WorkflowViewStateService.ViewState>
+                                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                          <av:Point x:Key="ShapeLocation">324.895,1004.5</av:Point>
+                                                          <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                          <av:PointCollection x:Key="ConnectorLocation">424.895,1056.5 424.895,1106.5</av:PointCollection>
+                                                        </scg:Dictionary>
+                                                      </sap:WorkflowViewStateService.ViewState>
+                                                      <Assign DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_16">
+                                                        <Assign.To>
+                                                          <OutArgument x:TypeArguments="rr:Result">
+                                                            <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_20">Result</CSharpReference>
+                                                          </OutArgument>
+                                                        </Assign.To>
+                                                        <Assign.Value>
+                                                          <InArgument x:TypeArguments="rr:Result">
+                                                            <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_30">Result.FromError(new VerificationPortalError(VerificationPortalStatus.BusinessException, "Could not locate any results for client name '" + QueueItem.ClientName + "'"))</CSharpValue>
+                                                          </InArgument>
+                                                        </Assign.Value>
+                                                        <sap:WorkflowViewStateService.ViewState>
+                                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                          </scg:Dictionary>
+                                                        </sap:WorkflowViewStateService.ViewState>
+                                                      </Assign>
+                                                      <FlowStep.Next>
+                                                        <FlowStep x:Name="__ReferenceID19" sap2010:WorkflowViewState.IdRef="FlowStep_10">
+                                                          <sap:WorkflowViewStateService.ViewState>
+                                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                              <av:Point x:Key="ShapeLocation">324.895,1106.5</av:Point>
+                                                              <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                              <av:PointCollection x:Key="ConnectorLocation">424.895,1158.5 424.895,1208.5</av:PointCollection>
+                                                            </scg:Dictionary>
+                                                          </sap:WorkflowViewStateService.ViewState>
+                                                          <uix:NGetText DisplayName="Get Text 'Contractor'" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="NGetText_3" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V3">
+                                                            <uix:NGetText.Target>
+                                                              <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="354, 356, 428, 16" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'GILBERTO MELGAR'" FullSelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl class='PlainText' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl class='PlainText' type='' tag='TD' /&gt;" Guid="69f4be04-83a3-4b27-ae35-138bd46ea6f7" InformativeScreenshot="29174da13d5cacf7e409e3c823a90b28.png" ScopeSelectorArgument="&lt;html app='chrome.exe' htmlwindowname='JSON:{&amp;quot;safe_rid&amp;quot;:&amp;quot;iUQMk-SP&amp;quot;,&amp;quot;mpa_id&amp;quot;:&amp;quot;&amp;quot;,&amp;quot;cid&amp;quot;:&amp;quot;N042392738519_2&amp;quot;,&amp;quot;cluster_id&amp;quot;:null,&amp;quot;tab_id&amp;quot;:1,&amp;quot;protocol_domain&amp;quot;:&amp;quot;xhr-us-east-1-029060369-view.menlosecurity.com&amp;quot;,&amp;quot;cluster_domain&amp;quot;:&amp;quot;us-east-1-029060369-view.menlosecurity.com&amp;quot;,&amp;quot;inspect_domain&amp;quot;:&amp;quot;us-east-1-029060*' title='LAY 1605618 - Status Update - Select Status' /&gt;" SearchSteps="FuzzySelector" Version="V2" Visibility="Interactive">
+                                                                <uix:TargetAnchorable.Anchors>
+                                                                  <scg:List x:TypeArguments="uix:ITarget" Capacity="4">
+                                                                    <uix:Target DesignTimeRectangle="38, 356, 316, 16" ElementType="Text" FriendlyName="'Contractor'" FullSelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' class='TableItemLabel' aaname='Contractor' check:innerText='Contractor' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAUAAAAAUCAYAAAD8+OT/AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGzSURBVHhe7dnLsYMgGEBhG3Qm9Tg2kjGVmDqysApLIEH5ERAD5rGBc2e+RQSR1QneNOr1d71e1TzPAFAVAgigWgQQQLUIIIBqEUAA1SKAQKkeg2qbRjWO/h6ZVzECCJTo3i/Ba2+TvTbd2t21b+k1/xnVsWvV8IiP/QIBBIozql6f+LoxMvY7EtR/BXDs9KmVAAI4I3L6OyIRE27MbOBuzqv0ZVCTHjfPsHRs5ZW769cAN70aI8/w92ViLcz6R/dk7ff1/GU84wuAAAKFsSFInMx284Jw2tiYkITzd/fb/zmu4XPXlDn+qc7ET6JqA7o+LzwBnt1vDgIIFGYXiqhJDRcnPpFrucHZBTASIBunhYlasF7ID+AH+81AAIHSJMKyCk5fCxOU4NX1qwCae2RNN2qpYL09LS4S+81AAIHi5PwI8sGJ6oMAhq+x3mdOgAD+IhIXCcRhwFKBC9c0n9MBNHNk/PBU54d7ff4Wz9P7zUAAgVLZ4GzCOEg0YuPJAEqwNB2x2CuwO+dFfqHdnuOPeyc8d/9eFLf5b/ebgQACqBYBBFAtAgigWgQQQLUIIIBKzeoJchu4FYPHrYwAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                                                                  </scg:List>
+                                                                </uix:TargetAnchorable.Anchors>
+                                                              </uix:TargetAnchorable>
+                                                            </uix:NGetText.Target>
+                                                            <uix:NGetText.TextString>
+                                                              <OutArgument x:TypeArguments="x:String">
+                                                                <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_27">contractor</CSharpReference>
+                                                              </OutArgument>
+                                                            </uix:NGetText.TextString>
+                                                            <sap:WorkflowViewStateService.ViewState>
+                                                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                              </scg:Dictionary>
+                                                            </sap:WorkflowViewStateService.ViewState>
+                                                          </uix:NGetText>
+                                                          <FlowStep.Next>
+                                                            <FlowStep x:Name="__ReferenceID20" sap2010:WorkflowViewState.IdRef="FlowStep_11">
+                                                              <sap:WorkflowViewStateService.ViewState>
+                                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                  <av:Point x:Key="ShapeLocation">324.895,1208.5</av:Point>
+                                                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                                </scg:Dictionary>
+                                                              </sap:WorkflowViewStateService.ViewState>
+                                                              <Assign DisplayName="Report Alternative Name" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_23">
+                                                                <Assign.To>
+                                                                  <OutArgument x:TypeArguments="x:String">
+                                                                    <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_28">QueueItem.ClientAlias</CSharpReference>
+                                                                  </OutArgument>
+                                                                </Assign.To>
+                                                                <Assign.Value>
+                                                                  <InArgument x:TypeArguments="x:String">
+                                                                    <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_46">SuggestAlias ? contractor : string.Empty</CSharpValue>
+                                                                  </InArgument>
+                                                                </Assign.Value>
+                                                                <sap:WorkflowViewStateService.ViewState>
+                                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                                  </scg:Dictionary>
+                                                                </sap:WorkflowViewStateService.ViewState>
+                                                              </Assign>
+                                                            </FlowStep>
+                                                          </FlowStep.Next>
+                                                        </FlowStep>
+                                                      </FlowStep.Next>
+                                                    </FlowStep>
+                                                  </FlowDecision.False>
+                                                </FlowDecision>
+                                              </FlowStep.Next>
+                                            </FlowStep>
+                                          </FlowDecision.True>
+                                          <FlowDecision.False>
+                                            <FlowStep x:Name="__ReferenceID12" sap2010:WorkflowViewState.IdRef="FlowStep_12">
+                                              <sap:WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                  <av:Point x:Key="ShapeLocation">368.895,840</av:Point>
+                                                  <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                                </scg:Dictionary>
+                                              </sap:WorkflowViewStateService.ViewState>
+                                              <Assign DisplayName="Bubble up error" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_14">
+                                                <Assign.To>
+                                                  <OutArgument x:TypeArguments="rr:Result">
+                                                    <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_18">Result</CSharpReference>
+                                                  </OutArgument>
+                                                </Assign.To>
+                                                <Assign.Value>
+                                                  <InArgument x:TypeArguments="rr:Result">
+                                                    <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_26">Result.FromError(crossReferenceResult)</CSharpValue>
+                                                  </InArgument>
+                                                </Assign.Value>
+                                                <sap:WorkflowViewStateService.ViewState>
+                                                  <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                  </scg:Dictionary>
+                                                </sap:WorkflowViewStateService.ViewState>
+                                              </Assign>
+                                            </FlowStep>
+                                          </FlowDecision.False>
+                                        </FlowDecision>
+                                      </FlowStep.Next>
+                                    </FlowStep>
+                                  </FlowDecision.False>
+                                </FlowDecision>
+                              </FlowStep.Next>
+                            </FlowStep>
+                          </FlowDecision.True>
+                          <FlowDecision.False>
+                            <FlowDecision x:Name="__ReferenceID3" DisplayName="Invoice Number Modified" sap:VirtualizedContainerService.HintSize="142,87" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
+                              <FlowDecision.Condition>
+                                <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_17">strippedLetters</CSharpValue>
+                              </FlowDecision.Condition>
+                              <sap:WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                  <av:Point x:Key="ShapeLocation">329,346.5</av:Point>
+                                  <av:Size x:Key="ShapeSize">142,87</av:Size>
+                                  <av:PointCollection x:Key="TrueConnector">329,390 268.895,390 268.895,460</av:PointCollection>
+                                  <av:PointCollection x:Key="FalseConnector">471,390 498.895,390 498.895,500 468.895,500 468.895,530</av:PointCollection>
+                                </scg:Dictionary>
+                              </sap:WorkflowViewStateService.ViewState>
+                              <FlowDecision.True>
+                                <FlowStep x:Name="__ReferenceID4" sap2010:WorkflowViewState.IdRef="FlowStep_13">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">168.895,460</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Business Exception" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_9">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="rr:Result">
+                                        <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_13">Result</CSharpReference>
+                                      </OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="rr:Result">
+                                        <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_18">Result.FromError(new VerificationPortalError(VerificationPortalStatus.BusinessException, "Reference number '" + QueueItem.ReferenceNumber + "' contains letters and stripped version is invalid."))</CSharpValue>
+                                      </InArgument>
+                                    </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Assign>
+                                </FlowStep>
+                              </FlowDecision.True>
+                              <FlowDecision.False>
+                                <FlowStep x:Name="__ReferenceID5" sap2010:WorkflowViewState.IdRef="FlowStep_14">
+                                  <sap:WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                      <av:Point x:Key="ShapeLocation">368.895,530</av:Point>
+                                      <av:Size x:Key="ShapeSize">200,52</av:Size>
+                                    </scg:Dictionary>
+                                  </sap:WorkflowViewStateService.ViewState>
+                                  <Assign DisplayName="Bot Exception" sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_10">
+                                    <Assign.To>
+                                      <OutArgument x:TypeArguments="rr:Result">
+                                        <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_14">Result</CSharpReference>
+                                      </OutArgument>
+                                    </Assign.To>
+                                    <Assign.Value>
+                                      <InArgument x:TypeArguments="rr:Result">
+                                        <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_19">Result.FromError(new VerificationPortalError(VerificationPortalStatus.BotException, QueueItem.ReferenceNumber, theirReferenceNumber, "Selected incorrect invoice number"))</CSharpValue>
+                                      </InArgument>
+                                    </Assign.Value>
+                                    <sap:WorkflowViewStateService.ViewState>
+                                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                      </scg:Dictionary>
+                                    </sap:WorkflowViewStateService.ViewState>
+                                  </Assign>
+                                </FlowStep>
+                              </FlowDecision.False>
+                            </FlowDecision>
+                          </FlowDecision.False>
+                        </FlowDecision>
+                      </FlowDecision.True>
+                      <FlowDecision.False>
+                        <FlowStep x:Name="__ReferenceID1" sap2010:WorkflowViewState.IdRef="FlowStep_15">
+                          <sap:WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                              <av:Point x:Key="ShapeLocation">242,140.5</av:Point>
+                              <av:Size x:Key="ShapeSize">200,52</av:Size>
+                              <av:PointCollection x:Key="ConnectorLocation">373,201.5 373,251.5</av:PointCollection>
+                            </scg:Dictionary>
+                          </sap:WorkflowViewStateService.ViewState>
+                          <Assign sap:VirtualizedContainerService.HintSize="200,52" sap2010:WorkflowViewState.IdRef="Assign_8">
+                            <Assign.To>
+                              <OutArgument x:TypeArguments="rr:Result">
+                                <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">Result</CSharpReference>
+                              </OutArgument>
+                            </Assign.To>
+                            <Assign.Value>
+                              <InArgument x:TypeArguments="rr:Result">
+                                <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_15">Result.FromError(new VerificationPortalError(VerificationPortalStatus.BusinessException, "Unable to verify load number or contractor name."))</CSharpValue>
+                              </InArgument>
+                            </Assign.Value>
+                            <sap:WorkflowViewStateService.ViewState>
+                              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                              </scg:Dictionary>
+                            </sap:WorkflowViewStateService.ViewState>
+                          </Assign>
+                        </FlowStep>
+                      </FlowDecision.False>
+                    </FlowDecision>
+                    <x:Reference>__ReferenceID1</x:Reference>
+                    <x:Reference>__ReferenceID2</x:Reference>
+                    <x:Reference>__ReferenceID3</x:Reference>
+                    <x:Reference>__ReferenceID4</x:Reference>
+                    <x:Reference>__ReferenceID5</x:Reference>
+                    <x:Reference>__ReferenceID6</x:Reference>
+                    <x:Reference>__ReferenceID7</x:Reference>
+                    <x:Reference>__ReferenceID8</x:Reference>
+                    <x:Reference>__ReferenceID9</x:Reference>
+                    <x:Reference>__ReferenceID10</x:Reference>
+                    <x:Reference>__ReferenceID11</x:Reference>
+                    <x:Reference>__ReferenceID12</x:Reference>
+                    <x:Reference>__ReferenceID0</x:Reference>
+                    <x:Reference>__ReferenceID13</x:Reference>
+                    <x:Reference>__ReferenceID14</x:Reference>
+                    <x:Reference>__ReferenceID15</x:Reference>
+                    <x:Reference>__ReferenceID16</x:Reference>
+                    <x:Reference>__ReferenceID17</x:Reference>
+                    <x:Reference>__ReferenceID18</x:Reference>
+                    <x:Reference>__ReferenceID19</x:Reference>
+                    <x:Reference>__ReferenceID20</x:Reference>
+                  </Flowchart>
+                  <uix:NClick ActivateBefore="True" ClickType="Single" DisplayName="Return to search screen" sap:VirtualizedContainerService.HintSize="665,157" sap2010:WorkflowViewState.IdRef="NClick_2" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="5e4dcd9c-63c7-4652-abfe-2df0ae406fae" Version="V1">
+                    <uix:NClick.Target>
+                      <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="1018, 736, 58, 21" ElementType="Button" FriendlyName="'Cancel'" FullSelectorArgument="&lt;webctrl id='cancel' tag='INPUT' type='submit' /&gt;" FuzzySelectorArgument="&lt;webctrl id='cancel' tag='INPUT' type='submit' aaname='Return without saving status update information' check:text='Cancel' /&gt;" Guid="c5ce30b4-a269-484e-b916-04cb09186fee" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAAZCAYAAABpaJ3KAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFkSURBVFhH7ZhN0oMgDIY9HwdyyTV0wcq1J+Ak3MIjpIQ/Ewamfl+LbcXMvIsafvLIG2bqAJ3GDY6xLAvM8wzjOF5KyIRsNBI4JtZ1hW3bLilko/AJfJqm4oQrCRljJHC0RGnwlYSMMW7wv4BrOcAw7JK6PO40aWnrkKBLOaIXwA0oYWGFAhOfGQXi0/DNwSsbGCX4yzhbrcGdxaUu5phcIXsrCGVCzjtGSOlc4vNZwcFBPidAmT3HWozW0RY8FJ0gatIgacGsqNAq+e8EgXNJ25C53FVZLd8BzuUKzkDpGsxFVQA/j90jODa+iLbgR60eTjFYUojj4PW7wjsh2TwprNsavLoBfZ6PYb/feOJU1Xlc/wePp8lOxZ8G77fY4/H0D4LnPe4uOr9W7gY37yyrR7lNieX4SURYlC1a78U/B7ditzpfm+9LQM8C/1Xd4DZu8G7/j3f7BQYDE919c+stOgUHeACZR0V8LZ1xRAAAAABJRU5ErkJggg==" InformativeScreenshot="3b3103b31a3b17cfcd68e369c61b869d.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='DGI 7337967 - Status Update - Select Status' /&gt;" SearchSteps="FuzzySelector, Image" />
+                    </uix:NClick.Target>
+                  </uix:NClick>
+                </Sequence>
+              </uix:NCheckState.IfExists>
+              <uix:NCheckState.IfNotExists>
+                <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="496,197" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <Assign DisplayName="Not Found Error" sap:VirtualizedContainerService.HintSize="434,82" sap2010:WorkflowViewState.IdRef="Assign_1">
+                    <Assign.To>
+                      <OutArgument x:TypeArguments="rr:Result">
+                        <CSharpReference x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">Result</CSharpReference>
+                      </OutArgument>
+                    </Assign.To>
+                    <Assign.Value>
+                      <InArgument x:TypeArguments="rr:Result">
+                        <CSharpValue x:TypeArguments="rr:Result" sap2010:WorkflowViewState.IdRef="CSharpValue`1_12">Result.FromError(new VerificationPortalError(VerificationPortalStatus.InvoiceNotFound, "Could not locate a load with reference number " + referenceNumber))</CSharpValue>
+                      </InArgument>
+                    </Assign.Value>
+                  </Assign>
+                </Sequence>
+              </uix:NCheckState.IfNotExists>
+              <uix:NCheckState.OutUiElement>
+                <OutArgument x:TypeArguments="ui:UiElement">
+                  <CSharpReference x:TypeArguments="ui:UiElement" sap2010:WorkflowViewState.IdRef="CSharpReference`1_8">clientNameElement</CSharpReference>
+                </OutArgument>
+              </uix:NCheckState.OutUiElement>
+              <uix:NCheckState.Target>
+                <uix:TargetAnchorable BrowserURL="http://websphere.landstar.com/stsupd/maint/prompt.do" DesignTimeRectangle="254, 294, 304, 16" ElementType="Text" FriendlyName="'MUBARAK 114 LLC'" FullSelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl tableCol='2' tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl type='' aaname='MUBARAK 114 LLC' tag='TD' /&gt;" Guid="5ce73e7f-24d0-44e6-a608-7f1f8b456e46" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAATQAAAAUCAYAAAADWsEdAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALtSURBVHhe7ZnRcewgDEVdH0VRiQt4NVCJu9gSeCCBESBs4518hNyPM/GCEZjMPYuT7fP5eAAAWAEIDQCwDBAaAGAZIDQAwDJAaACAZXgmtGP3Ztv8ZnZ/NH3HbvwW+6wrn0f3ne3O2zimJdWoSfcqfc424zNqnXy/9U5rb8fkZx7UysSxZj/6PmfVfcioc57wM1un9d2NZc7fS0JdIwCLMSE0440xfj9k3+F3k0KTAjYjtDqw3NYFL4rB2tA3J6JeBrF+qBPGtH19ncFaGmjcaM2hfSi03P9DQuN1yf169jwA/HYmhMYyqENRJPG90LSgsjCt459tIEfB1tpp/tCmra++P0laqVvg9W8mPHuzLpaJCXui7wPXj18OV3N8IbT05VN/8QRIov2XAgArMSU0175G0enJVQF7LzSlLc8bru9FdNWexRiulcDL++laFZEkPDOtsxetc/f7EO8frZ15L7TRvAD8BeaERkErMojBiqGTAbsKcmnnwNJrl6A9gdGYM7j13BE12LTWsRjj5ziuO1WFOjTf1ClGPzlG9H2Iz8D11bWfvBfadV0A1mZSaBwYDloRjAzRjNDqwLavevxq1gqsE1GS4Z0Yq7bmpFnq3L0KtswJrexdvWc9EBoAb5gWGgU1BkZIoQrR4G8190ILyLF0Hep2lNpteGmObm6eS6tVySWf/tIJT5NUz4TQYt1WokPxvBeaJlIA/grTQsvX8h8ET4RWh/BeaPH+XhT1OC3Y1CYDHWsqAZdjuzq0jvp0qPNcaCzbME+LKp/3QuPfj7L2UTsACzEvtPxqKMJRByydiGTgaLwMqBbYVJfGxX49fJciIri2lK0mnFaebR1qU8RcM/fKKdHXnvlCaIF+7XJv63sBWIkXQuvD2gcsSU1Qh7PvJ1LNSxmI09Mo2Pk0ZP9dnUqK+PQ6eY1XUvtZoY32h4XVUj9n3oOMKnUAFuOZ0AAA4BcAoQEAlgFCAwAsA4QGAFgGCA0AsAgf/x/E8hYFpQa4NwAAAABJRU5ErkJggg==" InformativeScreenshot="e582fd8867b59bf027410dcef10cc2e5.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='DGI 7337967 - Status Update - Select Status' /&gt;" SearchSteps="FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="29, 294, 225, 16" ElementType="Text" FriendlyName="'Contractor'" FullSelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl tableRow='2' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='RESOURCE' tag='TABLE' /&gt;&lt;webctrl type='' tag='TD' aaname='Contractor' check:text='Contractor' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAOUAAAAUCAYAAAByB/qqAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGlSURBVHhe7ZrtbcMgEEA9H0OxhyUmYRJv4RFoCT4Hw8VYrYto8iK9H+bzLN3zgZQpfP/meQ7rugLAACAlwGAgJcBgICXAYCAlwGAgJXRmCc5MYZoyrFfGfS5ICR3xwUYJjQuLtC0umLLtlyzOBOv1vjvw1gS36H13gJTQDW9jZbTBK313EYWM1fevpEzvgJTwFihV8hVSPYXseLtL57Ixsqa3zzmROE/WsjbtLx8Fbey2RyTJJyQJZW/BuCWNP4n35f4nICX0YU/Oxv2xGneUeRdj6y8rY1Upd2EyGbY2kaqcc6yGcgdO86tK2YhX3b8BUkIfquTVSYIcj4d5WyXdVvFeCXa6b1Et05zzil5K2Yr36nvnICV04trxVbuz5aLdIuVevRTRGxKV8bXiRUoYmpTA58e4lNBakisCxf4fSFmOOT5TKeGjUBJekra8g+1JfJxTSVdIKc9XpExztvWzOXo1TB+TSsJGvEgJ/4ALfx6QRFb6m1Jmkj3EUKU4xmCsfYx5riEiCoqEEVnzJF6kBHgDkBJgMJASYDCQEmAwkBJgKNbwBQf7t83cTuBiAAAAAElFTkSuQmCC" SearchSteps="FuzzySelector" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NCheckState.Target>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                  <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
+            </uix:NCheckState>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-8, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHRSURBVDhPpZNdKINhFMefG9q1C+XCvUvX7lzgyo1coRRRPiLZSmFhU6KIfL1JST7z/S1brxrKmu8xtDZWbCszmVlL1t/7PO/7jrVlyr9Ovec85/yec87TS/BPxQXcPQfg9gUlL1pxAY1rNnD7D5IXrbiA5KY9ZHQZJS9avwI2Tuwg1XoolDw6+0fR290DrUYDjuNwb7OynJgAp/0Wh7oVZLYugdTzIGU7UC9d4DMYgM/jgtHAo6G2CkeHByLgyvmGaZMbq2dODM7roR3bxNSBHSltRhEgWJp2D1sWLzPe9s7O88uUIuAlGELN5DlIwSJI6SqIUiALrcvFYaMxakKOomIH2uE5EXBjucKr24Fl8zOSlLuxi2UTxskaOMPlvYuNxAAtajV83if6ycahW48FocscNDyKu5DyGYBuV6/TsQAVfXt6U7i4YZ8ZfVLrjQXm02P4/X6WywDU+fk8dGHh4hJhL0VjSCzmQPJ60bdmYoWyGEDW1sY6VC0dUOSoQLKbkVrYgZGJebRP6JBQvsC6yh29lLJFRQCoGrcfWWLlrBXu95AUBUwOH9I1wijCGf0/ZEUAAh8hlI6bwV97pEik6HndjAVDBocUiQH4i747AL4Af8RcpdL0VFYAAAAASUVORK5CYII=" InformativeScreenshot="c007a0c5534f77c97b6baa95d3bfc93e.png" Selector="&lt;html app='chrome.exe' title='Status Update - Add a Status Update'/&gt;" Title="Status Update - Add a Status Update" Url="http://websphere.landstar.com/stsupd/maint/prompt.do" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

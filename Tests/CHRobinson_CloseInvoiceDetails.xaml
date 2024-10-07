@@ -1,0 +1,164 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="CHRobinson_CloseInvoiceDetails" sap2010:ExpressionActivityEditor.ExpressionActivityEditor="C#" sap:VirtualizedContainerService.HintSize="1210,1322" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>UiPath.UIAutomationNext.Contracts</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.HashCode</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="CHRobinson_CloseInvoiceDetails" sap:VirtualizedContainerService.HintSize="476,1217" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NApplicationCard AttachMode="ByInstance" CloseMode="Never" DisplayName="Use Browser Chrome: Accounts Receivable - Navisphere® Carrier" sap:VirtualizedContainerService.HintSize="434,1125" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="86d94988-c25d-4b6f-b87d-de321064d9f7" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="376,869" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <Sequence.Variables>
+              <Variable x:TypeArguments="x:String" Name="paidTo" />
+              <Variable x:TypeArguments="x:String" Name="invoiceLinkSlug" />
+            </Sequence.Variables>
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGetAttribute Attribute="href" DisplayName="Get Invoice Link" sap:VirtualizedContainerService.HintSize="334,206" sap2010:WorkflowViewState.IdRef="NGetAttribute_2" ScopeIdentifier="86d94988-c25d-4b6f-b87d-de321064d9f7" Version="V1">
+              <uix:NGetAttribute.Result>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_5">invoiceLinkSlug</CSharpReference>
+                </OutArgument>
+              </uix:NGetAttribute.Result>
+              <uix:NGetAttribute.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.navispherecarrier.com/accounts-receivable" DesignTimeRectangle="274, 856, 58, 25" ElementType="Text" FriendlyName="'14822 opens'" FullSelectorArgument="&lt;webctrl id='account-receivable-invoice-details' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl id='account-receivable-invoice-details' tag='A' type='' aaname='14822 opens in new window' check:text='* opens in new window' /&gt;" Guid="c2caecda-9b7f-4660-a133-fb27622dd219" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAD4AAAAdCAYAAADy+d/cAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAJmSURBVFhH7ZW/b9pAFMf5L9ItY8eMjIyMGTMydkSZKpYOWTwwlAEpLCgblbJ4ZEEimx0U2SIIG1GQVckKqBFyzIClUOnbd/ZBndpgO/LQyv5IJ7j37oe/9+69KyCj5MKzRi48a+TCs0YuPBk21M4AJ5cShEduCmHRe3DHnPeeuYVYzfG1LuOU7AVqxfoQ0mrLnVtY3ycQfP5yS4O+4e5If3ySC9884abubXpU+HKCC/5xf4SbuK6R7WqIrrHCwphBuKJ+bQSduVcTVGh8qTGCqMzRvxuizPZpTGHF8ScgoXAL3YaE0/oYujLCGW0aLtwbV26pOKcxe+H2FJ/8fWLRG9DhUNR537Ft/s9D7ciJ/HFJHvHXDRz2+zh0oxkm3LlXcEJRVJfaW+H8QAo1BaJJ66xm+Ew3oNg2vDUDbCG1vRuhcstbovyHeX9xOyR8M0P1UobAEi8gnHh9htikjyU7a+XOj8PXlM+/8M/3E+U/QsrC1xQBGWftuRfBgPA11NsBFSYZlVsNN03ZrRMV8SkY8SWlBbsNrVn4wUT5I0hVuKOolPcK+rsq+7dwc+wWo+r92uuzKs3Sgg7i2uAmxi4FmlP4zXui/DFIVbibb2QLbYKGhTtngG9LPoHBD2e/zi6SdGuORvqQPyapCrcMemLYM7NrdypKNKbUnqCv/6SK7FX1YnMMybRhmYZ73Qt0S7qsWHNR7nPnX4eaHsefgPSLm59AjlM6GBqq9Haz3GbzPwoqRINffb5mWHP3ifIn4P3C/3MSCf/w5SH0tP+V9uL84l8aTR7xrJELzxq58KyRC88aGRUO/AZIksGRcR76GwAAAABJRU5ErkJggg==" InformativeScreenshot="082e6e16bacdfe18775de87c930fcd00.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Accounts Receivable - Navisphere® Carrier' /&gt;" SearchSteps="FuzzySelector, Image">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="274, 819, 73, 18" ElementType="Button" FriendlyName="'Invoice #'" FullSelectorArgument="&lt;webctrl aaname='Invoice #' parentid='accounts-receivable-page' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Invoice #' parentid='accounts-receivable-page' tag='BUTTON' type='' check:text='Invoice #' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAE0AAAAWCAYAAACFQBGEAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALqSURBVFhH7ZYvj6NAGIfvU41CVdWhUChy4poTKFwVCoXjA+CqSC7HGdwq1DhUFQqHQuF+986/dmjplpLd21zCk0wWOsvM8Mz7vsM3bLzMJm0Fm7QVbNJWsElbwZdL68oDHCfG26B/+A+YSGtSBsZSNPr+X9BXIZxdjPrTpHUoDwwpF9ctCt9BtuAFf/3+I9scXy7t0xlrJOyAsjPXx6dRLWR9//FTtjlx70rryxAsLHHmOcK9Q30MuyBB2Y6yf6gi+i1AIRZkkAtjcPOzvm9RJgH2jhh7By/KwXvVJZBzsBCl/RvNF3k7OR/beTicGqgZVZ9Zi7MPkduDzdEW8M07nXO4bg69sllsYY/EPZcmFufHKGoOXheIPfof70SBTgwVIuoPLGsjT+AwF8pZjyqkF/T087xCFtC9k6DWFm6ljU0Gj8b04gI1p2eqE05chYbq8xCXZ/RDhyan1KZ7sz8TmlRJf9BCe5c0c8JMs8UtkGYEKEThFi9ZyTkHvB3pGYpGtYQRPCEpZjfFztICY2NI0BUIrEVPpenxZqPhdi6BqFG0qbNFasQwDODZHm7G5XWdMByKs7werCW9ygJp0xpwFxl1cr0fORJKQ7+QcSiLPDP15EKDVOx2qmaZjtcgE2msqvYNuk9HyqTpse4Rkc6QyE0TB8KyQ+AZC6Rd7wW30owoGTmUEo5V4z5FWvJGqUmRYre7qOlRkqxZwbJZ67f4wPR8Is2kJKVNmdLfoKA91bycnioymK9r5oT3UveeUcg8n2guqp/immfYuxm4Fv0oO+fE2cIEHyCNkBHmw6f6ElX2ea4Pgl2E09KDgNLdIanXg6BAUqoV2IcEb3v0bYO6zFDdG1ZwOgzCStZAGfVJ/VCWjS3uVpjgY6TR3ueueDbCxJmkQ52GL31ydHV6+awQnxyRld9DU+AY7KVYOd7hiGqS/lfawr8cEuLdTK1dgpA1J0wwkbaxjE3aCjZpK9ikrWCTtoJN2ssAfwHPknx8sH9umAAAAABJRU5ErkJggg==" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetAttribute.Target>
+            </uix:NGetAttribute>
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Version="V1">
+              <uix:NGoToUrl.Url>
+                <InArgument x:TypeArguments="x:String">
+                  <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_5">"https://www.navispherecarrier.com" + invoiceLinkSlug</CSharpValue>
+                </InArgument>
+              </uix:NGoToUrl.Url>
+            </uix:NGoToUrl>
+            <uix:NGetText DisplayName="Get Text 'Paid To'" sap:VirtualizedContainerService.HintSize="334,156" sap2010:WorkflowViewState.IdRef="NGetText_2" ScopeIdentifier="86d94988-c25d-4b6f-b87d-de321064d9f7" Version="V1">
+              <uix:NGetText.Target>
+                <uix:TargetAnchorable BrowserURL="https://www.navispherecarrier.com/accounts-receivable-invoice-details/422752486/0/228383600" DesignTimeRectangle="728, 556, 500, 35" ElementType="Text" FriendlyName="'Melgar Trucking'" FullSelectorArgument="&lt;webctrl aaname='Check Release Date Check # Paid To Amount Payment Type' tag='TABLE' /&gt;&lt;webctrl isleaf='1' tableCol='3' tag='TD' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Check Release Date Check # Paid To Amount Payment Type' tag='TABLE' /&gt;&lt;webctrl isleaf='1' type='' tag='TD' /&gt;" Guid="cdaa105a-583f-4c67-ad31-f4df5e79964e" InformativeScreenshot="23d41b31541d703d065beec6150eb8e4.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Invoice Details - Navisphere® Carrier' /&gt;" SearchSteps="FuzzySelector">
+                  <uix:TargetAnchorable.Anchors>
+                    <scg:List x:TypeArguments="uix:ITarget" Capacity="1">
+                      <uix:Target DesignTimeRectangle="728, 521, 500, 35" ElementType="Text" FriendlyName="'Paid To'" FullSelectorArgument="&lt;webctrl aaname='Check Release Date Check # Paid To Amount Payment Type' tag='TABLE' /&gt;&lt;webctrl aaname='Paid To' tag='TH' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='Check Release Date Check # Paid To Amount Payment Type' tag='TABLE' /&gt;&lt;webctrl aaname='Paid To' tag='TH' type='' check:text='Paid To' /&gt;" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAfgAAAAnCAYAAADjN1oxAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMMSURBVHhe7dwvk6pQHMZxX5WJRKJtIpFoJhKNZCLReAE2k8lk22SyMffOkAw7btpksj0X5fjn4uIdXe+dub/9fmaeAB4OtkcO4OD9/V2EEEIIsZXB29ubCCGEEGIrAwEAAHMoeAAADKLgAQAwiIIHAMAgCh4AAIMoeAAADKLgAQAwiIIHAMAgCh4AAIMoeAAADKLgAQAw6J8X/G5VyB96iqa123PtY55oOBxqWFRuDwAAuMd9BV8VbfGe4isc5ZrXWzfgz9qCHyosK+3cvq6bBX/1HS6TaP7hxgEA8I09VvB+qCiKFIW+K9ZYs40b8wS3C37anrtJ6LfF7gXtdhSN9UrBAwDwYMGfinen5bgt2cRdOm+bAs5G4eEqfb/fD1NNVhetezVHM8t6rjze/1jwFCQTLWfjqzGfqYrfz33UzhfI28/hBYrzudZ9ywUAABj0vIJfuJKtJwqDRHlZqixShfvxw1SL4yp+d45dpeKlncOPM2Xp+cfBQwW/nik+HO8rTFOlbpXBG820dkMAALDua0v0gddue5lee27Dr1wJn7q6U/C7Zd5ux+cCXk+j38b0+azgq6L9TvHpnsGH5sl+nHf+DgAAGPe1h+y8QFE60eUK/LZeqEjP98eP6Sv44/32l8nFU/Xdq/we1wV/LPOL8zWqsi397lI+AABWfXGJvmPjlse9WOWi1ma71TLvFC4FDwDAX/fcgj9+Pl66V+C2WqSdwu3McVqiTxfN6NZ6Ft8+j3PvEn2+4kk7AMD38NyCryd62X/eXMGPy1JFFsn32sLtK3jtVsq9tqj9Ud4cEytwxzxS8NrMlRzm8xVnubLD0/nNdjhR/1/rAABgy3MLvrlur6dJU9CuYPNXbdYzRc0xvQXf2DVjssPT7vvX5KaqNwulN8/T+rTgG7wmBwD47u4reAAA8F+g4AEAMIiCBwDAIAoeAACDKHgAAAyi4AEAMIiCBwDAIAoeAACDKHgAAAyi4AEAMIiCBwDAoEH146cIIYQQYisUPCGEEGIwFDwhhBBiMNyDBwDAHOkXBu4LExki6dIAAAAASUVORK5CYII=" SearchSteps="FuzzySelector, Image" />
+                    </scg:List>
+                  </uix:TargetAnchorable.Anchors>
+                </uix:TargetAnchorable>
+              </uix:NGetText.Target>
+              <uix:NGetText.Text>
+                <OutArgument x:TypeArguments="x:String">
+                  <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_6">paidTo</CSharpReference>
+                </OutArgument>
+              </uix:NGetText.Text>
+            </uix:NGetText>
+            <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="334,81" sap2010:WorkflowViewState.IdRef="NGoToUrl_2" Url="https://www.navispherecarrier.com/accounts-receivable" Version="V1" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,91" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info">
+              <ui:LogMessage.Message>
+                <InArgument x:TypeArguments="x:Object">
+                  <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_1">paidTo</CSharpValue>
+                </InArgument>
+              </ui:LogMessage.Message>
+            </ui:LogMessage>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="1912, -8, 1936, 1056" BrowserType="Chrome" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAAGgAAABoAaPmejwAAAInSURBVFhHxZfBVcMwDIY7QkdgBEZghI7QMydG6AiM0PdYgCNHRuA9FugIbBD+z7Vc2VZCWgI5fM+OJMuSpbjpZhiGm9i8nPbiS5zEQ2Qzh1A4BZuJdzEIAmAEZHfRmilCYQTOxTFvBs9iK5C/ZhkcxDbyEREKPTjLTi1bMr13urSZRk7mQ2CD7d77GSMUGnKyE9QYp4w7p7OgkJfNNH/KctYQ0GR/xEJlKHydD05HphaUB/u0mUZOhhKZjhKF/VE/nBf6OjMv9dSczjcdJ8BIln5NyVhz+qNKRFT9cZn0dW6zSfUWbJay0Zhs85xTO7r52KnVJXNGvfKcsQVVHDp9CaCR24ngL+obPWaZU5ZNNM7q6KyPAuCk2hO1U0slKbZlUgdgdYOSQUvWdwEY0lmfdL6LTZkERo6wi7MuOoHotrwpAN/FSS/8W4GsBIBOdG9Rnl8fgNP5Li49wShSiTS2NU+3Zdb9LgBDMn/LYUNgo7elW3ddAFPIhiP1txwQVFWeMWSzSADAZcMasqZXYJkAWiNDMitBajxsmvkyJeiM+ia0xvMBLN+EYt3X0LHaRQSrXMVksMqPEY222s9xG/H/fpBkQ9sAQ0hd7PRLfJJxlzwWG5t4ZEAG1UKn89l4olMzXXqLMm/is/izSYQMF/8s1zM+L5eUV0bImGza/vifPyYeOeT4fK2tMZH/3V+zFjmPbjlA1t2WPxEK56DN7I6gB6o6z2fYfAMYDF0ZCKqA1wAAAABJRU5ErkJggg==" InformativeScreenshot="4f41318089b5705edd3bef0ac0f287c1.png" Selector="&lt;html app='chrome.exe' title='Accounts Receivable - Navisphere® Carrier'/&gt;" Url="https://www.navispherecarrier.com/accounts-receivable" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

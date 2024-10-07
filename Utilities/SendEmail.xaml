@@ -1,0 +1,342 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="SendEmail" this:SendEmail.IsTest="False" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sco="clr-namespace:System.Collections.ObjectModel;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ss="clr-namespace:System.Security;assembly=System.Private.CoreLib" xmlns:tapm="clr-namespace:Tafs.Applications.PostVerificationPortal.Models;assembly=Tafs.Applications.PostVerificationPortal" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:umab="clr-namespace:UiPath.Mail.Activities.Business;assembly=UiPath.Mail.Activities" xmlns:umabh="clr-namespace:UiPath.Mail.Activities.Business.HtmlEditor;assembly=UiPath.Mail.Activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="MasterQueueItemCollection" Type="InArgument(tapm:QueueItemCollection)" />
+    <x:Property Name="IsTest" Type="InArgument(x:Boolean)" />
+  </x:Members>
+  <sap2010:ExpressionActivityEditor.ExpressionActivityEditor>C#</sap2010:ExpressionActivityEditor.ExpressionActivityEditor>
+  <sap:VirtualizedContainerService.HintSize>1613.6,1716.8</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <sco:Collection x:TypeArguments="x:String">
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>Microsoft.Exchange.WebServices.Data</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Linq.Expressions</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Security</x:String>
+      <x:String>System.Text</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal.Extensions</x:String>
+      <x:String>Tafs.Applications.PostVerificationPortal.Models</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Mail.Activities.Business.HtmlEditor</x:String>
+      <x:String>UiPath.Mail.Exchange</x:String>
+      <x:String>UiPath.Mail.Exchange.Activities</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Mail.Activities</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.SMTP.Activities</x:String>
+      <x:String>Tafs.Activities.SecureStringConverter</x:String>
+    </sco:Collection>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <sco:Collection x:TypeArguments="AssemblyReference">
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.HashCode</AssemblyReference>
+      <AssemblyReference>Microsoft.CSharp</AssemblyReference>
+      <AssemblyReference>Microsoft.Exchange.WebServices</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>System.Collections</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Linq</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Net.Mail</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>System.Runtime.InteropServices.RuntimeInformation</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.ServiceModel.Activities</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>Tafs.Applications.PostVerificationPortal</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>UiPath.Mail</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Database.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Memory.Data</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>PostVerificationPortal3.Core</AssemblyReference>
+      <AssemblyReference>Tafs.Activities.SecureStringConverter</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+    </sco:Collection>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="Send Email" sap:VirtualizedContainerService.HintSize="592,1652" sap2010:WorkflowViewState.IdRef="Sequence_4">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="x:String" Name="recipients" />
+      <Variable x:TypeArguments="x:String" Name="username" />
+      <Variable x:TypeArguments="ss:SecureString" Name="password" />
+      <Variable x:TypeArguments="x:String" Name="htmlBody" />
+      <Variable x:TypeArguments="sd:DataTable" Name="errorTable" />
+      <Variable x:TypeArguments="scg:List(tapm:QueueItem)" Name="queued" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <If sap:VirtualizedContainerService.HintSize="529.6,440" sap2010:WorkflowViewState.IdRef="If_3">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_50">IsTest</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+      <If.Then>
+        <Assign sap:VirtualizedContainerService.HintSize="433.6,81.6" sap2010:WorkflowViewState.IdRef="Assign_2">
+          <Assign.To>
+            <OutArgument x:TypeArguments="x:String">
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_9">recipients</CSharpReference>
+            </OutArgument>
+          </Assign.To>
+          <Assign.Value>
+            <InArgument x:TypeArguments="x:String">jwilson@tafs.com</InArgument>
+          </Assign.Value>
+        </Assign>
+      </If.Then>
+      <If.Else>
+        <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="postVerificationPortalRecipients" CacheStrategy="None" DisplayName="Get Asset" FolderPath="Shared/100 - Foreground" sap:VirtualizedContainerService.HintSize="334.4,143.2" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+          <ui:GetRobotAsset.Value>
+            <OutArgument x:TypeArguments="x:String">
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_1">recipients</CSharpReference>
+            </OutArgument>
+          </ui:GetRobotAsset.Value>
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              <x:Boolean x:Key="IsPinned">False</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+        </ui:GetRobotAsset>
+      </If.Else>
+    </If>
+    <ui:GetRobotCredential TimeoutMS="{x:Null}" AssetName="serviceAccountWindowsCredentials" CacheStrategy="None" DisplayName="Get Credential" FolderPath="Shared/100 - Foreground" sap:VirtualizedContainerService.HintSize="529.6,175.2" sap2010:WorkflowViewState.IdRef="GetRobotCredential_1">
+      <ui:GetRobotCredential.Password>
+        <OutArgument x:TypeArguments="ss:SecureString">
+          <CSharpReference x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpReference`1_3">password</CSharpReference>
+        </OutArgument>
+      </ui:GetRobotCredential.Password>
+      <ui:GetRobotCredential.Username>
+        <OutArgument x:TypeArguments="x:String">
+          <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_2">username</CSharpReference>
+        </OutArgument>
+      </ui:GetRobotCredential.Username>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+          <x:Boolean x:Key="IsPinned">False</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
+    </ui:GetRobotCredential>
+    <InvokeMethod DisplayName="Rebuild counts if stale" sap:VirtualizedContainerService.HintSize="529.6,166.4" sap2010:WorkflowViewState.IdRef="InvokeMethod_1" MethodName="RebuildValues">
+      <InvokeMethod.TargetObject>
+        <InArgument x:TypeArguments="tapm:QueueItemCollection">
+          <CSharpValue x:TypeArguments="tapm:QueueItemCollection" sap2010:WorkflowViewState.IdRef="CSharpValue`1_3">MasterQueueItemCollection</CSharpValue>
+        </InArgument>
+      </InvokeMethod.TargetObject>
+      <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+    </InvokeMethod>
+    <If DisplayName="If we have any queue items" sap:VirtualizedContainerService.HintSize="529.6,781.6" sap2010:WorkflowViewState.IdRef="If_4">
+      <If.Condition>
+        <InArgument x:TypeArguments="x:Boolean">
+          <CSharpValue x:TypeArguments="x:Boolean" sap2010:WorkflowViewState.IdRef="CSharpValue`1_75">MasterQueueItemCollection.Count &gt; 0</CSharpValue>
+        </InArgument>
+      </If.Condition>
+      <If.Then>
+        <Sequence DisplayName="Then" sap:VirtualizedContainerService.HintSize="496,444" sap2010:WorkflowViewState.IdRef="Sequence_6">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="433.6,185.6" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_5">
+            <umab:CreateHtmlContent.HtmlContent>
+              <OutArgument x:TypeArguments="x:String">
+                <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_11">htmlBody</CSharpReference>
+              </OutArgument>
+            </umab:CreateHtmlContent.HtmlContent>
+            <umab:CreateHtmlContent.HtmlContentArg>
+              <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="&lt;HTML&gt;&lt;HEAD&gt;&#xA;&lt;STYLE type=text/css&gt;&#xA;        body {&#xA;            font-family: Calibri;&#xA;        }&#xA;&#xA;        p {&#xA;            margin: 0;&#xA;        }&#xA;&#xA;        .mapping {&#xA;            background-color: #D3D4D7;&#xA;            color: black;&#xA;            padding: 1px;&#xA;        }&#xA;    &lt;/STYLE&gt;&#xA;&lt;!-- Instruct the web browser control to use IE 6 to render the page. --&gt;&#xA;&lt;META content=IE=6 http-equiv=X-UA-Compatible&gt;&lt;/HEAD&gt;&#xA;&lt;BODY&gt;&#xA;&lt;H1 align=center&gt;&lt;FONT size=5 face=&quot;Segoe UI&quot;&gt;&lt;IMG style=&quot;MARGIN: 0px&quot; alt=&quot;&quot; src=&quot;https://recruiting2.ultipro.com/TRA1027TRANT/JobBoard/b8528a84-1ba3-460a-b120-9234923005fd/Styles/GetLargeHeaderLogo?brandId=7ea4dd0f-5bb5-424b-a8fa-7cd5beff8c36&amp;amp;m=636886966874480000&quot; width=625 height=135&gt;&lt;/FONT&gt;&lt;/H1&gt;&#xA;&lt;P align=center&gt;&lt;SPAN style='FONT-SIZE: 18pt; FONT-FAMILY: &quot;Segoe UI&quot;,sans-serif; COLOR: green'&gt;&lt;FONT size=6&gt;&lt;U&gt;Portal Verification Report&lt;/U&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&lt;/P&gt;&#xA;&lt;P align=center&gt;&lt;SPAN style=&quot;FONT-SIZE: 18pt; FONT-FAMILY: 'Segoe UI', sans-serif; BACKGROUND-COLOR: lime&quot; face=&quot;Segoe UI&quot;&gt;Success Rate: &lt;SPAN class=mapping contentEditable=false&gt;{{OverallSuccess}}&lt;/SPAN&gt;/&lt;SPAN class=mapping contentEditable=false&gt;{{OverallTotal}}&lt;/SPAN&gt;&amp;nbsp;Verified -&amp;nbsp;(&lt;SPAN class=mapping contentEditable=false&gt;{{OverallSuccessPercent}}&lt;/SPAN&gt;) (&lt;SPAN class=mapping contentEditable=false&gt;{{TotalSkipped}}&lt;/SPAN&gt; Skipped)&lt;/SPAN&gt;&lt;/P&gt;&#xA;&lt;P&gt;&amp;nbsp;&lt;/P&gt;&#xA;&lt;P align=center&gt;&lt;SPAN class=mapping contentEditable=false&gt;{{TotalProcessedTable}}&lt;/SPAN&gt;&lt;/P&gt;&#xA;&lt;H2&gt;Verified&lt;/H2&gt;&#xA;&lt;P align=center&gt;&lt;SPAN class=mapping contentEditable=false&gt;{{VerifiedTable}}&lt;/SPAN&gt;&lt;/P&gt;&#xA;&lt;H2&gt;Error Table&lt;/H2&gt;&#xA;&lt;P align=center&gt;&lt;SPAN class=mapping contentEditable=false&gt;{{ErrorTable}}&lt;/SPAN&gt;&lt;/P&gt;&#xA;&lt;H2&gt;Skipped Table&lt;/H2&gt;&#xA;&lt;P align=center&gt;&lt;SPAN class=mapping contentEditable=false&gt;{{SkippedTable}}&lt;/SPAN&gt;&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;">
+                <umabh:HtmlContentArgument.RuntimeImages>
+                  <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+                </umabh:HtmlContentArgument.RuntimeImages>
+                <umabh:HtmlContentArgument.ValueMappings>
+                  <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="8">
+                    <umabh:HtmlTextValueMapping Name="OverallSuccess">
+                      <umabh:HtmlTextValueMapping.Value>
+                        <InArgument x:TypeArguments="x:Object">
+                          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_76">MasterQueueItemCollection.OverallSuccess</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTextValueMapping.Value>
+                    </umabh:HtmlTextValueMapping>
+                    <umabh:HtmlTextValueMapping Name="OverallSuccessPercent">
+                      <umabh:HtmlTextValueMapping.Value>
+                        <InArgument x:TypeArguments="x:Object">
+                          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_77" xml:space="preserve">MasterQueueItemCollection.ProcessedCount &gt; 0
+? (MasterQueueItemCollection.OverallSuccess / (decimal)MasterQueueItemCollection.ProcessedCount).ToString("P0")
+: "N/A"</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTextValueMapping.Value>
+                    </umabh:HtmlTextValueMapping>
+                    <umabh:HtmlTextValueMapping Name="OverallTotal">
+                      <umabh:HtmlTextValueMapping.Value>
+                        <InArgument x:TypeArguments="x:Object">
+                          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_78">MasterQueueItemCollection.ProcessedCount</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTextValueMapping.Value>
+                    </umabh:HtmlTextValueMapping>
+                    <umabh:HtmlTableValueMapping Name="ErrorTable">
+                      <umabh:HtmlTableValueMapping.Value>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_79">MasterQueueItemCollection.GetByStatus(VerificationPortalStatus.UnableToVerify, VerificationPortalStatus.InvoiceNotFound, VerificationPortalStatus.RejectedFraud, VerificationPortalStatus.RejectedPaymentIssue, VerificationPortalStatus.PaymentValueOutOfRange, VerificationPortalStatus.ClientNameMismatch, VerificationPortalStatus.BotException, VerificationPortalStatus.BusinessException).AsDataTable()</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTableValueMapping.Value>
+                    </umabh:HtmlTableValueMapping>
+                    <umabh:HtmlTextValueMapping Name="TotalSkipped">
+                      <umabh:HtmlTextValueMapping.Value>
+                        <InArgument x:TypeArguments="x:Object">
+                          <CSharpValue x:TypeArguments="x:Object" sap2010:WorkflowViewState.IdRef="CSharpValue`1_80">MasterQueueItemCollection.Skipped</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTextValueMapping.Value>
+                    </umabh:HtmlTextValueMapping>
+                    <umabh:HtmlTableValueMapping Name="SkippedTable">
+                      <umabh:HtmlTableValueMapping.Value>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_81">MasterQueueItemCollection.GetByStatus(VerificationPortalStatus.Queued).AsDataTable()</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTableValueMapping.Value>
+                    </umabh:HtmlTableValueMapping>
+                    <umabh:HtmlTableValueMapping Name="TotalProcessedTable">
+                      <umabh:HtmlTableValueMapping.Value>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_82">MasterQueueItemCollection.BuildCountsPerPortalTable(false)</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTableValueMapping.Value>
+                    </umabh:HtmlTableValueMapping>
+                    <umabh:HtmlTableValueMapping Name="VerifiedTable">
+                      <umabh:HtmlTableValueMapping.Value>
+                        <InArgument x:TypeArguments="sd:DataTable">
+                          <CSharpValue x:TypeArguments="sd:DataTable" sap2010:WorkflowViewState.IdRef="CSharpValue`1_83">MasterQueueItemCollection.BuildVerifiedTable(false)</CSharpValue>
+                        </InArgument>
+                      </umabh:HtmlTableValueMapping.Value>
+                    </umabh:HtmlTableValueMapping>
+                  </scg:List>
+                </umabh:HtmlContentArgument.ValueMappings>
+              </umabh:HtmlContentArgument>
+            </umab:CreateHtmlContent.HtmlContentArg>
+          </umab:CreateHtmlContent>
+          <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" ContinueOnError="{x:Null}" MailMessage="{x:Null}" Password="{x:Null}" ReplyTo="{x:Null}" Result="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" DisplayName="Send SMTP Mail Message" EnableSSL="True" From="svc_rpa@transamtruck.com" sap:VirtualizedContainerService.HintSize="433.6,169.6" sap2010:WorkflowViewState.IdRef="SendMail_2" IgnoreCRL="False" IsBodyHtml="True" Name="UiPath Robot Service" Port="25" SecureConnection="None" Server="mail.transamtruck.com" Subject="Post Verification Portal Report">
+            <ui:SendMail.Body>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_85">htmlBody.Replace("&amp;gt;", "&gt;").Replace("&amp;lt;", "&lt;")</CSharpValue>
+              </InArgument>
+            </ui:SendMail.Body>
+            <ui:SendMail.Email>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_67">username</CSharpValue>
+              </InArgument>
+            </ui:SendMail.Email>
+            <ui:SendMail.Files>
+              <scg:List x:TypeArguments="InArgument(x:String)" Capacity="0" />
+            </ui:SendMail.Files>
+            <ui:SendMail.SecurePassword>
+              <InArgument x:TypeArguments="ss:SecureString">
+                <CSharpValue x:TypeArguments="ss:SecureString" sap2010:WorkflowViewState.IdRef="CSharpValue`1_68">password</CSharpValue>
+              </InArgument>
+            </ui:SendMail.SecurePassword>
+            <ui:SendMail.To>
+              <InArgument x:TypeArguments="x:String">
+                <CSharpValue x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpValue`1_69">recipients</CSharpValue>
+              </InArgument>
+            </ui:SendMail.To>
+          </ui:SendMail>
+        </Sequence>
+      </If.Then>
+      <If.Else>
+        <umab:CreateHtmlContent DisplayName="Create HTML Content" sap:VirtualizedContainerService.HintSize="433.6,153.6" sap2010:WorkflowViewState.IdRef="CreateHtmlContent_6">
+          <umab:CreateHtmlContent.HtmlContent>
+            <OutArgument x:TypeArguments="x:String">
+              <CSharpReference x:TypeArguments="x:String" sap2010:WorkflowViewState.IdRef="CSharpReference`1_12">htmlBody</CSharpReference>
+            </OutArgument>
+          </umab:CreateHtmlContent.HtmlContent>
+          <umab:CreateHtmlContent.HtmlContentArg>
+            <umabh:HtmlContentArgument FilePath="{x:Null}" HtmlBody="&lt;HTML&gt;&lt;HEAD&gt;&#xA;&lt;STYLE type=text/css&gt;&#xA;        body {&#xA;            font-family: Calibri;&#xA;        }&#xA;&#xA;        p {&#xA;            margin: 0;&#xA;        }&#xA;&#xA;        .mapping {&#xA;            background-color: #D3D4D7;&#xA;            color: black;&#xA;            padding: 1px;&#xA;        }&#xA;    &lt;/STYLE&gt;&#xA;&lt;!-- Instruct the web browser control to use IE 6 to render the page. --&gt;&#xA;&lt;META content=IE=6 http-equiv=X-UA-Compatible&gt;&lt;/HEAD&gt;&#xA;&lt;BODY&gt;&#xA;&lt;H1 align=center&gt;&lt;FONT size=5 face=&quot;Segoe UI&quot;&gt;&lt;IMG style=&quot;MARGIN: 0px&quot; alt=&quot;&quot; src=&quot;https://recruiting2.ultipro.com/TRA1027TRANT/JobBoard/b8528a84-1ba3-460a-b120-9234923005fd/Styles/GetLargeHeaderLogo?brandId=7ea4dd0f-5bb5-424b-a8fa-7cd5beff8c36&amp;amp;m=636886966874480000&quot; width=625 height=135&gt;&lt;/FONT&gt;&lt;/H1&gt;&#xA;&lt;P align=center&gt;&lt;SPAN style='FONT-SIZE: 18pt; FONT-FAMILY: &quot;Segoe UI&quot;,sans-serif; COLOR: green'&gt;&lt;FONT size=6&gt;&lt;U&gt;Portal Verification Report&lt;/U&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&lt;/P&gt;&#xA;&lt;P align=center&gt;&lt;SPAN style='FONT-SIZE: 12pt; FONT-FAMILY: &quot;Segoe UI&quot;,sans-serif; COLOR: black'&gt;&lt;FONT style=&quot;BACKGROUND-COLOR: #00ff00&quot;&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&amp;nbsp;&lt;/P&gt;&#xA;&lt;P align=center&gt;&lt;SPAN style='FONT-SIZE: 12pt; FONT-FAMILY: &quot;Segoe UI&quot;,sans-serif; COLOR: black'&gt;&lt;FONT style=&quot;BACKGROUND-COLOR: #00ff00&quot; size=4&gt;Nothing to do!&lt;/FONT&gt;&lt;/SPAN&gt;&lt;/P&gt;&lt;/BODY&gt;&lt;/HTML&gt;">
+              <umabh:HtmlContentArgument.RuntimeImages>
+                <scg:Dictionary x:TypeArguments="x:String, InArgument(x:String)" />
+              </umabh:HtmlContentArgument.RuntimeImages>
+              <umabh:HtmlContentArgument.ValueMappings>
+                <scg:List x:TypeArguments="umabh:HtmlValueMappingBase" Capacity="0" />
+              </umabh:HtmlContentArgument.ValueMappings>
+            </umabh:HtmlContentArgument>
+          </umab:CreateHtmlContent.HtmlContentArg>
+        </umab:CreateHtmlContent>
+      </If.Else>
+    </If>
+  </Sequence>
+</Activity>
